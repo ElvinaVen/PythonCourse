@@ -53,6 +53,6 @@ def statistic():
 
 
 user_name = input('Введите ваше имя:\n')
-answers_sum = mix_words()  # запускаем функцию перемешивания букв в слове
+answers_sum = mix_words()  # запускаем функцию перемешивания букв в слове и результат помещаем в answers_sum
 player_list(answers_sum)  # запускаем функцию записи имени игрока и его баллов
 statistic()  # запускаем функцию по статистике
