@@ -4,3 +4,8 @@ ruslan 30
 elvina 10
 elvina 40
 elvinchik 30
+mary 10
+li 10
+sistel 10
+leyla 10
+tom 40

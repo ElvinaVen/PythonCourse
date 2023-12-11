@@ -2,43 +2,57 @@ import random
 
 
 def mix_words():
-    score = 0
-    with open('words.txt', 'r') as file:  # считываем построчно слова из файла
-        for word in file:
-            word = word.strip()  # убираем символ переноса на строку из слова
-            mix_word = list(word.strip())  # превращаем строку в список и удаляем символ переноса на строку
-            random.shuffle(mix_word)
-            mix_word = ', '.join(mix_word)  # превращаем список в строку
-            mix_word = mix_word.replace(', ', '')  # удаляем из строки ", "
+    """
+    перемешивает буквы в слове
+    :return: количество баллов score
+    """
+    score = 0  # задаем количесвто баллов
+    with open('words.txt') as file:  # считываем построчно слова из файла
+        for word in file:  # передвигаемся по словам
+            word = word.strip()  # убираем из слова символ переноса на строку
+            mix_word = list(word)  # превращаем строку в список
+            random.shuffle(mix_word)  # миксуем буквы в слове, здесь слово является списком
+            mix_word = ', '.join(mix_word)  # обратно превращаем список в строку
+            mix_word = mix_word.replace(', ', '')  # удаляем из слова-строки ", "
 
-            user_answer = input(f'Угадайте слово: {mix_word}\n')
-            if user_answer == word:
+            user_answer = input(f'Угадайте слово: {mix_word}\n')  # предлагаем угадать слово
+
+            if user_answer == word:  # если ответ пользователя равен слову
                 print('Верно! Вы получаете 10 очков.')
-                score += 10
+                score += 10  # доббавляем 10 баллов молодцу
             else:
                 print(f'Неверно! Верный ответ – {word}.')
-    return score
+    return score  # возвращаем суммарное количество баллов
 
 
-def player_statistic(score):
-    with open('history.txt', 'a') as file:
+def player_list(score):
+    """
+    записывает имя игрока и количество набранных баллов в файл
+    :param score:
+    :return:
+    """
+    with open('history.txt', 'a') as file:  # добавляет в конец файла новую строчку по новому игроку
         file.write(f"{user_name} {score}\n")
     print("Ответы записаны")
 
 
 def statistic():
-    lider = 0
-    index = 0
-    with open('history.txt', 'r') as file:
-        for line in file:
-            player, ball = line.strip().split(' ')
-            index += 1
-            if int(ball) > int(lider):
-                lider = ball
-    print(f'Всего игр сыграно: {index} \nМаксимальный рекорд: {lider}')
+    """
+показывает лидера и общее количество игр
+    :return:
+    """
+    lider = 0  # задаем переменной лидер минимальное значение 0
+    plays_sum = 0  # здесь будем считать общее количество игр
+    with open('history.txt', 'r') as file:  # открываем на чтение файл история или пайтон сам его создаст
+        for player in file:  # передвигаемся по строчкам-игрокам
+            player, ball = player.strip().split(' ')  # присваиваем переменным игрок и балл значения из строки, которые разделены пробелом
+            plays_sum += 1  # счетчик количества игр
+            if int(ball) > int(lider):  # если балл больше минимального
+                lider = ball  # присваиваем лидерному баллу новый балл
+    print(f'Всего игр сыграно: {plays_sum} \nМаксимальный рекорд: {lider}')
 
 
 user_name = input('Введите ваше имя:\n')
-answers_sum = mix_words()
-player_statistic(answers_sum)
-statistic()
+answers_sum = mix_words()  # запускаем функцию перемешивания букв в слове
+player_list(answers_sum)  # запускаем функцию записи имени игрока и его баллов
+statistic()  # запускаем функцию по статистике
