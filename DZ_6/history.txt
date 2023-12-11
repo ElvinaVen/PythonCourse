@@ -1,6 +1,6 @@
 elle 10
 sam 10
 ruslan 30
-elvina 0
+elvina 10
 elvina 40
 elvinchik 30
