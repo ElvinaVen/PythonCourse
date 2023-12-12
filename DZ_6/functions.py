@@ -42,21 +42,21 @@ def history_read():
     """
 
     """
-    i = 0
+    players_list = []
+    players_ball_list = []
     with open('history.txt', 'r') as file:  # открываем на чтение файл история или пайтон сам его создаст
         for player in file:  # передвигаемся по строчкам-игрокам
             player, ball = player.strip().split(' ')  # присваиваем переменным игрок и балл значения
-            i += 1
-    return i, ball
+            players_ball_list.append(ball.strip())
+            players_list.append(player.strip())
+    return players_list, players_ball_list
 
 
-def statistic(player, ball):
+def statistic(players_list, players_ball_list):
     """
 показывает лидера и общее количество игр
     :return:
     """
-    lider = 0  # задаем переменной лидер минимальное значение 0
-    #player += 1  # здесь будем считать общее количество игр
-    if int(ball) > int(lider):  # если балл больше минимального
-        lider = ball  # присваиваем лидерному баллу новый балл
+    lider = max(players_ball_list)  # задаем переменной лидер минимальное значение 0
+    player = len(players_list)
     print(f'Всего игр сыграно: {player} \nМаксимальный рекорд: {lider}')

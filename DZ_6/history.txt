@@ -42,3 +42,11 @@ ds 0
 df 0
 lk 0
 hjb 0
+вы 20
+kl 0
+d 0
+d 0
+dsd 10
+urrrrraa 40
+вы 0
+ds 10
