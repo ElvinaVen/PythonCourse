@@ -6,20 +6,16 @@ def load_students():
     Загружает список студентов из файла
     """
     with open("students.json") as file: #  открыть файл на чтение
-        #file = file.read()
-        #print(file)
-        file = json.load(file)
+        file = json.load(file)  # переделываем джейсон файл в пайтон словарь
     return file
+
 
 def load_professions():
     """
     Загружает список профессий из файла
     """
     with open("professions.json") as file: #  открыть файл на чтение
-        #file = file.read()
-        #print(file.read())
         file = json.load(file)
-    #json.load(file)
     return file
 
 
@@ -27,40 +23,31 @@ def get_student_by_pk(pk):
     """
     Получает словарь с данными студента по его pk
     """
-    file = load_students()
+    file = load_students()  # вызов функции загрузки списка студентов из файла
 
-    for i in range(len(file)):
+    for i in range(len(file)):  # перебор списка в файле студентов
         if int(pk) == file[i]["pk"]:
             print(f"Студент {file[i]["full_name"]}")
-            skills = ", ".join(file[i]["skills"])
+            skills = ", ".join(file[i]["skills"])  # список превращаем в строку
             print(f"Знает {skills}")
             break
     else:
         print("У нас нет такого студента")
-    student = file[i]["full_name"]
+        quit()  # выход из программы
+    student = file[i]["full_name"]  # присваиваем студенту его имя по порядковому номеру рк
     return student
 
 def get_profession_by_title(title):
     """
     Получает словарь с инфо о профе по названию
     """
-    file = load_professions()
+    file = load_professions()  # вызов функции загрузки списка профессий из файла
 
-    for i in range(len(file)):
+    for i in range(len(file)):  # перебор списка в файле профессий
         if title == file[i]["title"]:
-
+            profession = file[i]["title"]
             break
     else:
         print("У нас нет такой специальности")
-    profession = file[i]["title"]
+        quit()
     return profession
-
-def check_fitness(student, profession):
-    """
-    которая получив студента и профессию, возвращала бы словарь типа:
-    """
-    #my_student = set(load_students())
-    my_profession = set(load_professions())
-    file = load_professions()
-    my_profession = file[i]["skills"]
-    print(student)
