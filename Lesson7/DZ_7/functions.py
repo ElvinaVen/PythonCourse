@@ -25,16 +25,16 @@ def get_student_by_pk(pk):
     """
     file = load_students()  # вызов функции загрузки списка студентов из файла
 
-    for i in range(len(file)):  # перебор списка в файле студентов
-        if int(pk) == file[i]["pk"]:
-            print(f"Студент {file[i]["full_name"]}")
-            skills = ", ".join(file[i]["skills"])  # список превращаем в строку
+    for stud_dict in file:  # перебор списка в файле студентов
+        if stud_dict["pk"] == int(pk):  #
+            print(f"Студент {stud_dict["full_name"]}")
+            skills = ", ".join(stud_dict["skills"])  # список превращаем в строку
             print(f"Знает {skills}")
             break
-    else:
-        print("У нас нет такого студента")
-        quit()  # выход из программы
-    student = file[i]["full_name"]  # присваиваем студенту его имя по порядковому номеру рк
+        else:
+            print("У нас нет такого студента")
+            quit()  # выход из программы
+    student = stud_dict["full_name"]  # присваиваем студенту его имя по порядковому номеру рк
     return student
 
 def get_profession_by_title(title):
@@ -43,11 +43,11 @@ def get_profession_by_title(title):
     """
     file = load_professions()  # вызов функции загрузки списка профессий из файла
 
-    for i in range(len(file)):  # перебор списка в файле профессий
-        if title == file[i]["title"]:
-            profession = file[i]["title"]
+    for prof_dict in file:  # перебор списка в файле профессий
+        if title == prof_dict["title"]:
+            profession = prof_dict["title"]
             break
-    else:
-        print("У нас нет такой специальности")
-        quit()
+        else:
+            print("У нас нет такой специальности")
+            quit()
     return profession
