@@ -16,9 +16,14 @@ def check_fitness(student, profession):
         if student == stud_dict["full_name"]:
             student_skill = stud_dict["skills"]  # вывод списка навыков, которые есть у студента
             yes_skill = set(student_skill).intersection(need_skill)  # вывод необходимых навыков, которые есть у
-                                                                     # студента
-
+            # студента
     not_skill = set(need_skill).difference(student_skill)  # вывод навык, которых недостает студенту
-    print(f"Пригодность {(len(yes_skill) / len(need_skill)) * 100}%")  #  счет процента пригодности
-    print(f"{student} знает {", ".join(yes_skill)}")
-    print(f"{student} не знает {", ".join(not_skill)}")
+    percent = (len(yes_skill) / len(need_skill)) * 100  # счет процента пригодности
+
+    fitness = {
+        "has": list(yes_skill),
+        "lacks": list(not_skill),
+        "percent": percent
+    }
+
+    return fitness
