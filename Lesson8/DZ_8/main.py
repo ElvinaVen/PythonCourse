@@ -4,6 +4,9 @@ import random
 
 class Question:
     all_questions = []
+    sum_correct_answer = []
+    sum_balls = 0
+    sum_user_answer = []
 
     def __init__(self, question, hard, correct_answer, isanswer=False, user_answer=None):
         """
@@ -28,6 +31,7 @@ class Question:
         """Возвращает True, если ответ пользователя совпадает
         с верным ответов иначе False.
         """
+
         self.user_answer = user_answer
         if self.user_answer == self.correct_answer:
             return True
@@ -44,12 +48,13 @@ class Question:
         Ответ верный, получено __ баллов
         Ответ неверный, верный ответ __
         """
-
-        if user_question.is_correct(user_answer) == True:
-
-            text = f"Ответ верный, получено {user_question.get_points()} баллов"
+        Question.sum_user_answer.append("True")
+        if user_question.is_correct(user_answer):
+            Question.sum_correct_answer.append("True")
+            Question.sum_balls += user_question.get_points()
+            text = f"Ответ верный, получено {user_question.get_points()} баллов\n"
         else:
-            text = f"Ответ неверный, верный ответ {self.correct_answer}"
+            text = f"Ответ неверный, верный ответ {self.correct_answer}\n"
 
         return text
 
@@ -88,20 +93,24 @@ def del_questions(question_index):
     Question.all_questions.remove(Question.all_questions[question_index])
 
 
+def statistic():
+    sum_correct_answer = len(Question.sum_correct_answer)
+    sum_balls = Question.sum_balls
+    sum_answer = len(Question.sum_user_answer)
+    return sum_correct_answer, sum_answer, sum_balls
+
+
+def test(question_one):
+    question = question_one["q"]
+    hard = question_one['d']
+    correct_answer = question_one['a']
+    return question, hard, correct_answer
+
+
 load_questions()
 print("Игра начинается!")
-
 while len(Question.all_questions) != 0:
     question_one = get_questions()
-
-
-    def test(question_one):
-        question = question_one["q"]
-        hard = question_one['d']
-        correct_answer = question_one['a']
-        return question, hard, correct_answer
-
-
     question, hard, correct_answer = test(question_one)
     user_question = Question(question, hard, correct_answer)
     print(f"Вопрос: {get_question()}")
@@ -110,3 +119,6 @@ while len(Question.all_questions) != 0:
     user_question.is_correct(user_answer)
     user_question.get_points()
     print(user_question.build_positive_or_negative_feedback())
+
+sum_correct_answer, sum_answer, sum_balls = statistic()
+print(f"Вот и все!\nОтвечено {sum_correct_answer} вопроса из {sum_answer}\nНабрано {sum_balls} баллов")
