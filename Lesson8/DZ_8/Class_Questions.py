@@ -1,7 +1,5 @@
-import json
-import random
-from functions import create_list
-#from Class_Questions import Question
+#from main import user_question
+#from main import user_answer
 
 
 class Question:
@@ -10,14 +8,14 @@ class Question:
     sum_balls = 0
     sum_user_answer = []
 
-    def __init__(self, question, hard, correct_answer, isanswer=False, user_answer=None):
+    def __init__(self, question, hard, correct_answer, is_answer=False, user_answer=None):
         """
         Инициализирует
         """
         self.question = question
         self.hard = hard
         self.correct_answer = correct_answer
-        self.isanswer = isanswer
+        self.is_answer = is_answer
         self.user_answer = user_answer
 
     def get_points(self):
@@ -59,61 +57,3 @@ class Question:
             text = f"Ответ неверный, верный ответ {self.correct_answer}\n"
 
         return text
-
-
-def get_hard():
-    question, hard = user_question.build_question()
-    return hard
-
-
-def get_question():
-    question, hard = user_question.build_question()
-    return question
-
-
-def load_questions():
-    """
-    Загружает список вопросов из файла
-    """
-    with open("questions.json") as file:  # открыть файл на чтение
-        Question.all_questions = json.load(file)
-
-
-def get_questions():
-    """
-    Получает словарь с инфо о профе по названию
-    """
-    question_one = random.choice(Question.all_questions)
-    Question.all_questions.remove(question_one)
-    return question_one
-
-
-def del_questions(question_index):
-    Question.all_questions.remove(Question.all_questions[question_index])
-
-
-def statistic():
-
-    sum_correct_answer = len(Question.sum_correct_answer)
-    sum_balls = Question.sum_balls
-    sum_answer = len(Question.sum_user_answer)
-    return sum_correct_answer, sum_answer, sum_balls
-
-
-load_questions()
-print("Игра начинается!")
-while len(Question.all_questions) != 0:
-    question_one = get_questions()
-    question, hard, correct_answer = create_list(question_one)
-    user_question = Question(question, hard, correct_answer)  # экземпляр
-    print(f"Вопрос: {get_question()}")
-    print(f"Сложность: {get_hard()}/5")
-
-    user_answer = input()
-
-    user_question.is_correct(user_answer)
-    user_question.get_points()
-    print(user_question.build_positive_or_negative_feedback())
-
-sum_correct_answer, sum_answer, sum_balls = statistic()
-print(f"Вот и все!\nОтвечено {sum_correct_answer} вопроса из {sum_answer}\nНабрано {sum_balls} баллов")
