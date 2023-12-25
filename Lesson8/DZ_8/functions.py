@@ -20,6 +20,16 @@ def get_one_question(all_questions_list):
     return question_one
 
 
+def build_list(questions, question_one, user_answer, score):
+    """
+    создание списка questions
+    """
+    question_one['answer'] = user_answer  # добавляем в словарь новый ключ-значение
+    question_one['score'] = score  # добавляем в словарь новый ключ-значение
+    questions.append(question_one)  # добавляем в общий список наш вопрос с новым ключ-значением
+    return questions
+
+
 def statistic(questions):
     """
     Расчет статистики
@@ -27,8 +37,8 @@ def statistic(questions):
     sum_correct_answer = 0
     sum_score = 0
     for item in questions:
-        if item["a"] == item["answer"]:
-            sum_correct_answer += 1
-            sum_score += item["score"]
+        if item["a"] == item["answer"]:  # если значение под ключом "а" равно зн-ию под ключом "answer"
+            sum_correct_answer += 1  # счетчик правильных ответов
+            sum_score += item["score"]  # счетчик суммарных баллов
     sum_answer = len(questions)
     print(f"Вот и все!\nОтвечено {sum_correct_answer} вопроса из {sum_answer}\nНабрано {sum_score} баллов")
