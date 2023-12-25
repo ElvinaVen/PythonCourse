@@ -1,20 +1,17 @@
-from functions import create_list, get_difficulty_level, get_question, load_questions, get_questions, statistic
-#from Class_Questions import Question
+
+from functions import load_questions, get_one_question, statistic
+
 
 class Question:
 
-    sum_correct_answer = []
-    sum_score = 0
-    sum_user_answer = []
-
-    def __init__(self, question, difficulty_level, correct_answer, isanswer=False, user_answer=None):
+    def __init__(self, question, difficulty_level, correct_answer, is_answer=False, user_answer=None):
         """
         Инициализирует
         """
         self.question = question
         self.difficulty_level = difficulty_level
         self.correct_answer = correct_answer
-        self.isanswer = isanswer
+        self.is_answer = is_answer
         self.user_answer = user_answer
         self.score = 10 * int(self.difficulty_level)
 
@@ -22,7 +19,6 @@ class Question:
         """Возвращает int, количество баллов.
         Баллы зависят от сложности: за 1 дается 10 баллов, за 5 дается 50 баллов.
         """
-
         if user_question.is_correct(user_answer):
             return self.score
 
@@ -39,37 +35,34 @@ class Question:
         Вопрос: What do people often call American flag?
         Сложность 4/5
         """
-        return self.question, self.difficulty_level
+        print(f"Вопрос: {self.question}\nСложность: {self.difficulty_level}/5")
+        #return self.question, self.difficulty_level
 
     def build_positive_or_negative_feedback(self):
         """Возвращает :
         Ответ верный, получено __ баллов. Ответ неверный, верный ответ __
         """
-        Question.sum_user_answer.append("True")
         if user_question.is_correct(user_answer):
-            Question.sum_correct_answer.append("True")
-            Question.sum_score += user_question.get_points()
-            text = f"Ответ верный, получено {user_question.get_points()} баллов\n"
+            print(f"Ответ верный, получено {user_question.get_points()} баллов\n")
         else:
-            text = f"Ответ неверный, верный ответ {self.correct_answer}\n"
-        return text
+            print(f"Ответ неверный, верный ответ {self.correct_answer}\n")
 
 
-all_questions = load_questions()
+questions = []
+all_questions_list = load_questions()  # вызов ф-ии выгрузки списка вопросов из файла
 print("Игра начинается!")
 
-while len(all_questions) != 0:
-    question_one = get_questions(all_questions)
-    question, difficulty_level, correct_answer = create_list(question_one)
-    user_question = Question(question, difficulty_level, correct_answer)  # экземпляр
-    get_question(user_question)
-    get_difficulty_level(user_question)
+while len(all_questions_list) != 0:
 
-    user_answer = input()
-
-    user_question.is_correct(user_answer)
-    user_question.get_points()
-    print(user_question.build_positive_or_negative_feedback())
-
-
-statistic(Question.sum_correct_answer, Question.sum_score, Question.sum_user_answer)
+    question_one = get_one_question(all_questions_list)  # вызов ф-ии возврата одного вопрос question_one из списка
+                                                         # вопросов all_questions_list
+    user_question = Question(question_one["q"], question_one['d'], question_one['a'])  # создаем экземпляр класса,
+                                                         # в который передаем вопрос, сложность и прав. ответ
+    user_question.build_question()
+    user_answer = input("Ваш ответ: ")
+    question_one['answer'] = user_answer
+    score = user_question.get_points()
+    question_one['score'] = score
+    user_question.build_positive_or_negative_feedback()
+    questions.append(question_one)
+statistic(questions)
