@@ -60,3 +60,4 @@ while len(all_questions_list) != 0:
     user_question.build_positive_or_negative_feedback()  # вызов ф-ии build_positive_or_negative_feedback
     questions = build_list(questions, question_one, user_answer, score)  # вызов ф-ии создания списка questions
 statistic(questions)  # Вызов ф-ии расчета статистики
+
