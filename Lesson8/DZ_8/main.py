@@ -1,8 +1,5 @@
-import json
-import random
-from functions import create_list, get_difficulty_level, get_question, load_questions, get_questions
+from functions import create_list, get_difficulty_level, get_question, load_questions, get_questions, statistic
 #from Class_Questions import Question
-
 
 class Question:
 
@@ -58,14 +55,6 @@ class Question:
         return text
 
 
-def statistic():
-
-    sum_correct_answer = len(Question.sum_correct_answer)
-    sum_balls = Question.sum_score
-    sum_answer = len(Question.sum_user_answer)
-    print(f"Вот и все!\nОтвечено {sum_correct_answer} вопроса из {sum_answer}\nНабрано {sum_balls} баллов")
-
-
 all_questions = load_questions()
 print("Игра начинается!")
 
@@ -82,4 +71,5 @@ while len(all_questions) != 0:
     user_question.get_points()
     print(user_question.build_positive_or_negative_feedback())
 
-statistic()
+
+statistic(Question.sum_correct_answer, Question.sum_score, Question.sum_user_answer)

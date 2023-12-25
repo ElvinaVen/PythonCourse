@@ -35,3 +35,9 @@ def get_questions(all_questions):
     all_questions.remove(question_one)
     return question_one
 
+def statistic(sum_correct_answer, sum_score, sum_user_answer):
+
+    sum_correct_answer = len(sum_correct_answer)
+    sum_balls = sum_score
+    sum_answer = len(sum_user_answer)
+    print(f"Вот и все!\nОтвечено {sum_correct_answer} вопроса из {sum_answer}\nНабрано {sum_balls} баллов")
