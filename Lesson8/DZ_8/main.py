@@ -1,4 +1,3 @@
-
 from functions import load_questions, get_one_question, statistic, build_list
 
 
@@ -36,7 +35,6 @@ class Question:
         Сложность 4/5
         """
         print(f"Вопрос: {self.question}\nСложность: {self.difficulty_level}/5")
-        #return self.question, self.difficulty_level
 
     def build_positive_or_negative_feedback(self):
         """Возвращает :
