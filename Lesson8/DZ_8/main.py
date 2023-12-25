@@ -38,7 +38,7 @@ class Question:
 
     def build_positive_or_negative_feedback(self):
         """Возвращает :
-        Ответ верный, получено __ баллов. Ответ неверный, верный ответ __
+        Ответ верный, получено __ баллов. Ответ неверный, верный ответ __.
         """
         if user_question.is_correct(user_answer):
             print(f"Ответ верный, получено {user_question.get_points()} баллов\n")

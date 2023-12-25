@@ -22,7 +22,7 @@ def get_one_question(all_questions_list):
 
 def build_list(questions, question_one, user_answer, score):
     """
-    создание списка questions
+    создание списка questions.
     """
     question_one['answer'] = user_answer  # добавляем в словарь новый ключ-значение
     question_one['score'] = score  # добавляем в словарь новый ключ-значение
@@ -32,7 +32,7 @@ def build_list(questions, question_one, user_answer, score):
 
 def statistic(questions):
     """
-    Расчет статистики
+    Расчет статистики.
     """
     sum_correct_answer = 0
     sum_score = 0
