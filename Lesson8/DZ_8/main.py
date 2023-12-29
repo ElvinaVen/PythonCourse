@@ -11,7 +11,7 @@ while len(all_questions_list) != 0:
                                                          # в который передаем вопрос, сложность и прав. ответ
     user_question.build_question()  # Вызов ф-ии возврата вопроса и сложности для юзера
     user_answer = input("Ваш ответ: ")
-    score = user_question.get_points()  # Вызов ф-ии возврата кол-ва баллов
-    user_question.build_positive_or_negative_feedback()  # вызов ф-ии build_positive_or_negative_feedback
+    score = user_question.get_points(user_question, user_answer)  # Вызов ф-ии возврата кол-ва баллов
+    user_question.build_positive_or_negative_feedback(user_question, user_answer)  # вызов ф-ии build_positive_or_negative_feedback
     questions = build_list(questions, question_one, user_answer, score)  # вызов ф-ии создания списка questions
 statistic(questions)  # Вызов ф-ии расчета статистики
