@@ -17,6 +17,7 @@ def get_one_question(all_questions_list):
     """
     question_one = random.choice(all_questions_list)  # рандомно выбираем 1 вопрос из всего списка
     all_questions_list.remove(question_one)  # удаляем этот вопрос из общего списка
+    #print(all_questions_list)
     return question_one
 
 
@@ -42,3 +43,4 @@ def statistic(questions):
             sum_score += item["score"]  # счетчик суммарных баллов
     sum_answer = len(questions)
     print(f"Вот и все!\nОтвечено {sum_correct_answer} вопроса из {sum_answer}\nНабрано {sum_score} баллов")
+
