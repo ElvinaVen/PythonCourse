@@ -1,6 +1,6 @@
-from DZ_13_OOP1.src.Category_class import Category
-from DZ_13_OOP1.src.Product_class import Product
-from DZ_13_OOP1.src.utils import load_src_file
+from Category_class import Category
+from Product_class import Product
+from utils import load_src_file
 
 # Овощи Фрукты - это для подставления в name1 и name2
 
