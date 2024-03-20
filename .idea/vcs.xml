@@ -2,7 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Lessons13/oop_additional_tasks-main" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/pytest_proj" vcs="Git" />
   </component>
 </project>

@@ -13,26 +13,23 @@ class Category:
         Category.product_count += len(self.__products)
 
     def __repr__(self):
-        return f"{self.__class__.__name__} ('{self.category_name}' '{self.category_description}' '{self.__len__()}')"
+        return f"{self.__class__.__name__} ('{self.category_name}' '{self.category_description}' '{self.__products}')"
 
-    def __len__(self):
-        # lens = 0
-        # for item in self.__products:
-        #     print(self.__products)
-        #     len_products += item.product_quantity
-        # return len(len_products)
-        # lens = len(self.__products[0])
-        return len(self.__products)
+    def __len__(self, __products):
+        product_count = 0
+        for product in self.__products:
+            product_count += product.product_quantity
+        return product_count
 
     def __str__(self):
-        return f'{self.category_name}, количество продуктов: {self.product_count} шт.'
+        return f'{self.category_name}, количество продуктов: {self.__len__(self.__products)} шт.'
 
-    # @property
-    # def products(self):
-    #     result = ''
-    #     for product in self.__products:
-    #         result += f'{product.product_name}, {product.price} руб. Остаток: {product.product_quantity} шт.\n'
-    #     return result
+    @property
+    def products(self):
+        result = ''
+        for product in self.__products:
+            result += f'{product.product_name}, {product.price} руб. Остаток: {product.product_quantity} шт.\n'
+        return result
 
     @classmethod
     def create_category_object(cls, src_file):

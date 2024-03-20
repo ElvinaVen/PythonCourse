@@ -107,3 +107,7 @@ class Product:
         """
         product_quantity = src_file['quantity']
         return product_quantity
+
+    def __add__(self, other):
+        total_price = (self.__product_price * self.product_quantity) + (other.__product_price * other.product_quantity)
+        return float(total_price)
