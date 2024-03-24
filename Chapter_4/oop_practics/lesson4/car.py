@@ -14,7 +14,29 @@
 
 
 class Car:
-    pass
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+
+    def get_make(self):
+        return self.make
+
+    def get_model(self):
+        return self.model
+
+    def get_year(self):
+        return self.year
+
+
+class ElectricCar(Car):
+
+    def __init__(self, make, model, year, battery_size):
+        super().__init__(make, model, year)
+        self.battery_size = battery_size
+
+    def get_battery_size(self):
+        return self.battery_size
 
 
 # код для проверки 
