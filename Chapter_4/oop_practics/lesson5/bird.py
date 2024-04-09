@@ -14,10 +14,24 @@
 
 
 class Bird:
-    pass
+
+    def fly(self):
+        print('Flying')
 
 
-# код для проверки 
+class Penguin(Bird):
+
+    def fly(self):
+        print('I am a penguin and cannot fly')
+
+
+class Eagle(Bird):
+
+    def hunt(self):
+        print('Hunting')
+
+
+# код для проверки
 bird = Bird()
 bird.fly()  # Flying
 
