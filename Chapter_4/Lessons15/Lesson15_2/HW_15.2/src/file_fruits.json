@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Фрукты",
+    "description": "Сладкие, сочные",
+    "products": [
+      {
+        "name": "Бананы",
+        "description": "Желтые",
+        "price": 120.0,
+        "quantity": 12
+      },
+      {
+        "name": "Яблоки",
+        "description": "Красные",
+        "price": 80.0,
+        "quantity": 8
+      },
+      {
+        "name": "Груши",
+        "description": "Зеленые",
+        "price": 140.0,
+        "quantity": 14
+      }
+    ]
+  },
+  {
+    "name": "Овощи",
+    "description": "Полезные, твердые",
+    "products": [
+      {
+        "name": "Огурцы",
+        "description": "Колючие",
+        "price": 110.0,
+        "quantity": 11
+      },
+      {
+        "name": "Капуста",
+        "description": "Белокочанная",
+        "price": 50.0,
+        "quantity": 5
+      }
+    ]
+  }
+]
