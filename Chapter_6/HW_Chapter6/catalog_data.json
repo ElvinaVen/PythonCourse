@@ -1,0 +1,44 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "груша",
+      "description": "как лампа",
+      "image": "",
+      "category": 2,
+      "price": 100,
+      "created_at": "2024-05-27",
+      "updated_at": "2024-05-27"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "яблоки",
+      "description": "красные",
+      "image": "",
+      "category": null,
+      "price": 26,
+      "created_at": "2024-05-14",
+      "updated_at": "2024-05-27"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Овощи",
+      "description": "польза полная"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Фрукты",
+      "description": "сладкие и сочные"
+    }
+  }
+]
