@@ -14,7 +14,7 @@ class Command(BaseCommand):
 
     @staticmethod
     def json_read_products():  # Здесь мы получаем данные из фикстурв с продуктами
-        with open('product.json', encoding='utf-8') as json_file:
+        with open('catalog_data.json', encoding='utf-8') as json_file:
             return json.load(json_file)
 
     def handle(self, *args, **options):
