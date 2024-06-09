@@ -20,3 +20,8 @@ def contact(request):
         'title': "Контакты"
     }
     return render(request, 'main/contact.html', context)
+
+def view_student(request, pk):
+    student_item = Student.objects.get(pk=pk)
+    context = {'object': student_item}
+    return render(request, 'main/student_detail.html', context)
