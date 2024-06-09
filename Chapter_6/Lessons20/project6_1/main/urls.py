@@ -1,13 +1,13 @@
 from django.urls import path
 
-from main.views import index, contact, view_student
+from main.views import contact, StudentListView, StudentDetailView
 
 from main.apps import MainConfig
 
 app_name = MainConfig.name
 
 urlpatterns = [
-    path('', index, name='index'),
+    path('', StudentListView.as_view(), name='index'),
     path('contact/', contact, name='contact'),
-    path('student/<int:pk>/', view_student, name='view_student'),
+    path('student/<int:pk>/', StudentDetailView.as_view(), name='view_student'),
 ]
