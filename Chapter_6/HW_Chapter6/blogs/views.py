@@ -1,7 +1,7 @@
 
 
 from django.template.defaultfilters import slugify
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
 from blogs.models import Blog
@@ -44,6 +44,9 @@ class BlogUpdateView(UpdateView):
     model = Blog
     fields = ('title', 'body')
     success_url = reverse_lazy('blogs:list')
+
+    def get_success_url(self):
+        return reverse('blogs:view', kwargs={'pk': self.object.pk})
 
 
 class BlogDeleteView(DeleteView):
