@@ -1,7 +1,10 @@
 {% extends 'main/base.html' %}
 {% block content %}
+    <div class="col-12 mb-5">
+        <a class="btn btn-outline-primary" href = "{% url 'main:create_student' %}">Добавить студента</a>
+    </div>
     {% for object in object_list %}
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="card mb-4 box-shadow">
 
             <div class="card-body">
@@ -17,14 +20,18 @@
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                        <a class="btn btn-primary" href="{% url 'main:view_student' object.pk %}"
+                        <a class="btn btn-outline-primary" href="{% url 'main:view_student' object.pk %}"
                                    role="button">Просмотр</a>
-                        <a class="btn btn-primary" href="#"
+                        <a class="btn btn-outline-primary" href="{% url 'main:update_student' object.pk %}"
                                    role="button">Редактировать</a>
-                        <a class="btn btn-primary" href="#"
+                        <a class="btn btn-outline-primary" href="{% url 'main:delete_student' object.pk %}"
                                    role="button">Удалить</a>
-
                     </div>
+                    {% if object.is_active %}
+                    <a class="btn btn-warning" href="{% url 'main:toggle_activity' object.pk%}">Деактивировать</a>
+                    {% else %}
+                    <a class="btn btn-success" href="{% url 'main:toggle_activity' object.pk%}">Aктивировать</a>
+                    {%endif%}
                 </div>
             </div>
         </div>
