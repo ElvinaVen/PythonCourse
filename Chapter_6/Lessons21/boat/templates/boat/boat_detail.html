@@ -31,7 +31,7 @@
         </table>
     </div>
         <div class="card-footer">
-        <a href="#" class="btn btn-outline-success">Оставить заявку</a>
+        <a href="{% url 'order:create' object.pk %}" class="btn btn-outline-success">Оставить заявку</a>
         </div>
     </div>
 {% endblock %}

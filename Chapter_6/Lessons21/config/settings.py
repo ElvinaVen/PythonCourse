@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'boat',
+    'order',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,8 @@ STATICFILES_DIRS = (BASE_DIR / "static",)
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+# EMAIL_HOST_USER = 'noreply@yandex.ru'
+# EMAIL_HOST_PASSWORD = 'AsTSNVv7pun9'
+EMAIL_USE_SSL = False
