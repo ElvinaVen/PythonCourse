@@ -20,6 +20,12 @@ def contact(request):
     return render(request, 'main/contact.html', context)
 
 
+def view_student(request):
+    student = Student.objects.get(pk=pk)
+    context = {"student": student}
+    return render(request, "student_detail.html", context)
+
+
 class StudentDetailView(DetailView):
     model = Student
 
