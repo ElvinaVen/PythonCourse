@@ -4,6 +4,8 @@ from django.urls import reverse_lazy, reverse
 from main.models import Student
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from main.forms import StudentForm
+
 
 class StudentListView(ListView):
     model = Student
@@ -32,17 +34,20 @@ class StudentDetailView(DetailView):
 
 class StudentCreateView(CreateView):
     model = Student
-    fields = ['first_name', 'last_name', 'avatar']
+    form_class = StudentForm
     success_url = reverse_lazy('main:index')
+
 
 class StudentUpdateView(UpdateView):
     model = Student
-    fields = ['first_name', 'last_name', 'avatar']
+    form_class = StudentForm
     success_url = reverse_lazy('main:index')
+
 
 class StudentDeleteView(DeleteView):
     model = Student
     success_url = reverse_lazy('main:index')
+
 
 def toggle_active(request, pk):
     student_item = get_object_or_404(Student, pk=pk)
@@ -53,4 +58,3 @@ def toggle_active(request, pk):
 
     student_item.save()
     return redirect(reverse('main:index'))
-
