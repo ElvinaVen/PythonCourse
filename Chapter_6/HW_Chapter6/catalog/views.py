@@ -1,14 +1,11 @@
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView
 
-from catalog.models import Product, Version
+from catalog.models import Product, Version, Category
 
 from catalog.forms import ProductForm
 from django.urls import reverse_lazy, reverse
 from django.forms import inlineformset_factory
 
-
-# def home(request):
-#     return render(request, "home.html")
 
 class ContactTemplateView(TemplateView):
     template_name = 'catalog/contacts.html'
@@ -17,10 +14,20 @@ class ContactTemplateView(TemplateView):
 class ProductListView(ListView):
     model = Product
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['my_var'] = 'здесь должен быть номер активной версии'
+        return context
 
 
 class ProductDetailView(DetailView):
     model = Product
+
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['my_var'] = 'здесь должен быть номер активной версии'
+        return context
 
 
 class ProductCreateView(CreateView):
@@ -42,7 +49,6 @@ class ProductUpdateView(UpdateView):
         else:
             context_data['formset'] = ProductFormset(instance=self.object)
         return context_data
-
 
     def form_valid(self, form):
         context_data = self.get_context_data()
