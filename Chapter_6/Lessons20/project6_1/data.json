@@ -3,9 +3,10 @@
     "model": "main.student",
     "pk": 1,
     "fields": {
-      "first_name": "Иван",
-      "last_name": "Иванов",
-      "avatar": "",
+      "first_name": "иван",
+      "last_name": "иванов",
+      "avatar": "students/ivan_Q5RPdFu.jpeg",
+      "email": null,
       "is_active": true
     }
   },
@@ -13,40 +14,64 @@
     "model": "main.student",
     "pk": 2,
     "fields": {
-      "first_name": "Петр",
-      "last_name": "Петров",
-      "avatar": "",
-      "is_active": true
+      "first_name": "петр",
+      "last_name": "петров",
+      "avatar": "students/alex_OAfVWUx.webp",
+      "email": null,
+      "is_active": false
     }
   },
   {
     "model": "main.student",
     "pk": 3,
     "fields": {
-      "first_name": "Дима",
-      "last_name": "Курочкин",
-      "avatar": "",
-      "is_active": false
+      "first_name": "яна",
+      "last_name": "курпатова",
+      "avatar": "students/petr_YSu2e2l.jpeg",
+      "email": null,
+      "is_active": true
     }
   },
   {
     "model": "main.student",
     "pk": 4,
     "fields": {
-      "first_name": "Ann",
-      "last_name": "Smith",
-      "avatar": "",
-      "is_active": true
+      "first_name": "руслан",
+      "last_name": "иксанов",
+      "avatar": "students/semen_Su9KWaY.png",
+      "email": null,
+      "is_active": false
     }
   },
   {
     "model": "main.student",
     "pk": 5,
     "fields": {
-      "first_name": "Ira",
-      "last_name": "Shad",
-      "avatar": "",
+      "first_name": "Евгений",
+      "last_name": "Клименко",
+      "avatar": "students/faisulla_02sLD2A.jpeg",
+      "email": null,
       "is_active": true
+    }
+  },
+  {
+    "model": "main.student",
+    "pk": 6,
+    "fields": {
+      "first_name": "катюха",
+      "last_name": "никитина",
+      "avatar": "",
+      "email": "test@sky.pro",
+      "is_active": true
+    }
+  },
+  {
+    "model": "main.subject",
+    "pk": 1,
+    "fields": {
+      "title": "Python",
+      "description": "django",
+      "student": 5
     }
   }
 ]
