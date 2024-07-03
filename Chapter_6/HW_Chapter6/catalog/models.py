@@ -1,5 +1,7 @@
 from django.db import models, connection
 
+from users.models import User
+
 NULLABLE = {"null": True, "blank": True}
 
 
@@ -25,6 +27,7 @@ class Product(models.Model):
     updated_at = models.DateField(
         verbose_name="Дата последнего изменения (записи в БД)"
     )
+    owner = models.ForeignKey(User, verbose_name='Владелец',help_text='Укажите владельца продукта', blank=True, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return f"{self.name} - {self.price}"

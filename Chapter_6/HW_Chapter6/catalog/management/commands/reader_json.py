@@ -18,10 +18,6 @@ class Command(BaseCommand):
             return json.load(json_file)
 
     def handle(self, *args, **options):
-        # with connection.cursor() as cursor:
-        #     cursor.execute(f"TRUNCATE TABLE catalog_category RESTART IDENTITY CASCADE;")
-        #     cursor.execute(f"TRUNCATE TABLE catalog_product RESTART IDENTITY CASCADE;")
-          # Удалите все продукты
 
         Product.objects.all().delete()  # Удалите все категории
 
