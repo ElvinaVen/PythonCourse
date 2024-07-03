@@ -6,7 +6,9 @@
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div class="col-12 mb-5">
-                <a class="btn btn-outline-primary" href="{% url 'catalog:create' %}">Добавить продукт</a>
+                {% if user.is_authenticated %}
+                    <a class="btn btn-outline-primary" href="{% url 'catalog:create' %}">Добавить продукт</a>
+                {% endif %}
             </div>
             {% for product in object_list %}
             <div class="col-3">
@@ -28,9 +30,10 @@
                             <div class="btn-group">
                                 <a class="btn btn-primary" href="{% url 'catalog:products_detail' product.pk %}"
                                    role="button">Просмотр</a>
-                                <a href="{% url 'catalog:edit' product.pk %}"
-                                   class="btn btn-sm btn-outline-secondary">Рeдактировать</a>
-
+                                {% if user.is_authenticated %}
+                                    <a href="{% url 'catalog:edit' product.pk %}"
+                                        class="btn btn-sm btn-outline-secondary">Рeдактировать</a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
