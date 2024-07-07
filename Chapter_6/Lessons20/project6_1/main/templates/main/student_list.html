@@ -1,7 +1,9 @@
 {% extends 'main/base.html' %}
 {% block content %}
 <div class="col-12 mb-5">
-    <a class="btn btn-outline-primary" href="{% url 'main:create_student' %}">Добавить студента</a>
+    {% if perms.main.add_student %}
+        <a class="btn btn-outline-primary" href="{% url 'main:create_student' %}">Добавить студента</a>
+    {% endif %}
 </div>
 {% for object in object_list %}
 <div class="col-md-4">
@@ -22,10 +24,14 @@
                 <div class="btn-group">
                     <a class="btn btn-outline-primary" href="{% url 'main:view_student' object.pk %}"
                        role="button">Просмотр</a>
-                    <a class="btn btn-outline-primary" href="{% url 'main:update_student' object.pk %}"
+                    {% if perms.main.change_student %}
+                        <a class="btn btn-outline-primary" href="{% url 'main:update_student' object.pk %}"
                        role="button">Редактировать</a>
-                    <a class="btn btn-outline-primary" href="{% url 'main:delete_student' object.pk %}"
+                    {% endif %}
+                    {% if user.is_superuser %}
+                        <a class="btn btn-outline-primary" href="{% url 'main:delete_student' object.pk %}"
                        role="button">Удалить</a>
+                    {% endif %}
                 </div>
             </div>
 

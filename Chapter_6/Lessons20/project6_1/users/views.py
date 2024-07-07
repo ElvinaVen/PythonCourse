@@ -1,4 +1,4 @@
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
@@ -18,7 +18,7 @@ class RegisterView(generic.CreateView):
     success_url = reverse_lazy('users:login')
 
 
-class ProfileView(generic.UpdateView):
+class ProfileView(LoginRequiredMixin, generic.UpdateView):
     model = User
     form_class = UserProfileForm
     success_url = reverse_lazy('users:profile')
