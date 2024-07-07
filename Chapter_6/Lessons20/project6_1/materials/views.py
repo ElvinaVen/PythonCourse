@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy, reverse
 from pytils.translit import slugify
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
@@ -5,7 +6,7 @@ from django.views.generic import CreateView, ListView, DetailView, UpdateView, D
 from materials.models import Material
 
 
-class MaterialCreateView(CreateView):
+class MaterialCreateView(LoginRequiredMixin, CreateView):
     model = Material
     fields = ('title', 'body',)
     success_url = reverse_lazy('materials:list')
@@ -19,7 +20,7 @@ class MaterialCreateView(CreateView):
         return super().form_valid(form)
 
 
-class MaterialListView(ListView):
+class MaterialListView(LoginRequiredMixin, ListView):
     model = Material
 
     def get_queryset(self, *args, **kwargs):
@@ -28,7 +29,7 @@ class MaterialListView(ListView):
         return queryset
 
 
-class MaterialDetailView(DetailView):
+class MaterialDetailView(LoginRequiredMixin, DetailView):
     model = Material
 
     def get_object(self, queryset=None):
@@ -38,7 +39,7 @@ class MaterialDetailView(DetailView):
         return self.object
 
 
-class MaterialUpdateView(UpdateView):
+class MaterialUpdateView(LoginRequiredMixin, UpdateView):
     model = Material
     fields = ('title', 'body',)
 
@@ -54,6 +55,6 @@ class MaterialUpdateView(UpdateView):
         return reverse('materials:view', args=[self.kwargs.get('pk')])
 
 
-class MaterialDeleteView(DeleteView):
+class MaterialDeleteView(LoginRequiredMixin, DeleteView):
     model = Material
     success_url = reverse_lazy('materials:list')
