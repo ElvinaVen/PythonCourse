@@ -90,3 +90,4 @@ def toggle_active(request, pk):
 
     student_item.save()
     return redirect(reverse('main:index'))
+

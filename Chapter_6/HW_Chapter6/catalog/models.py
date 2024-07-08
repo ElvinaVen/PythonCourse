@@ -27,7 +27,9 @@ class Product(models.Model):
     updated_at = models.DateField(
         verbose_name="Дата последнего изменения (записи в БД)"
     )
-    owner = models.ForeignKey(User, verbose_name='Владелец',help_text='Укажите владельца продукта', blank=True, null=True, on_delete=models.SET_NULL)
+    owner = models.ForeignKey(User, verbose_name='Владелец', help_text='Укажите владельца продукта', blank=True,
+                              null=True, on_delete=models.SET_NULL)
+    is_published = models.BooleanField(blank=True, null=True, default=False, verbose_name='Публикация')
 
     def __str__(self):
         return f"{self.name} - {self.price}"
@@ -41,6 +43,10 @@ class Product(models.Model):
             "created_at",
             "updated_at",
         )
+        permissions = [
+            ('can_edit_description', 'Can edit description'),
+            ('can_edit_category', 'Can edit category'),
+        ]
 
 
 class Category(models.Model):
@@ -80,4 +86,3 @@ class Version(models.Model):
     class Meta:
         verbose_name = "версия"
         verbose_name_plural = "версии"
-
