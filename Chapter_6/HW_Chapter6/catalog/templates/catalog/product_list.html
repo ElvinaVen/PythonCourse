@@ -11,6 +11,7 @@
                 {% endif %}
             </div>
             {% for product in object_list %}
+            {% if product.is_published %}
             <div class="col-3">
                 <div class="card shadow-sm">
                     <img src="{{ product.image | media_filter}}">
@@ -39,6 +40,7 @@
                 </div>
 
             </div>
+            {% endif %}
             {% endfor %}
         </div>
     </div>
