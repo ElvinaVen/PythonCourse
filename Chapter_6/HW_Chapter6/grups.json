@@ -378,13 +378,23 @@
     }
   },
   {
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+      "name": "Can edit is_published",
+      "content_type": 7,
+      "codename": "can_edit_is_published"
+    }
+  },
+  {
     "model": "auth.group",
     "pk": 1,
     "fields": {
       "name": "moderator",
       "permissions": [
         42,
-        41
+        41,
+        43
       ]
     }
   },
