@@ -1,6 +1,6 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.exceptions import PermissionDenied
-from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
 
 from catalog.models import Product, Version, Category
 
@@ -79,3 +79,11 @@ class ProductUpdateView(UpdateView, LoginRequiredMixin):
                 'catalog.can_edit_category') and user.has_perm('catalog.can_edit_is_published'):
             return ProductModeratorForm
         raise PermissionDenied
+
+
+class ProductDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Product
+    success_url = reverse_lazy('catalog:products_list')
+
+    def test_func(self):
+        return self.request.user.is_superuser

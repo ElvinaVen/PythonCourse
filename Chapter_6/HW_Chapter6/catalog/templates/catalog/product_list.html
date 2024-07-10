@@ -12,7 +12,7 @@
             </div>
             {% for product in object_list %}
             {% if product.is_published %}
-            <div class="col-3">
+            <div class="col-4">
                 <div class="card shadow-sm">
                     <img src="{{ product.image | media_filter}}">
                     <div class="card-body">
@@ -33,6 +33,10 @@
                                    role="button">Просмотр</a>
                                 {% if perms.catalog.can_edit_description and perms.catalog.can_edit_category and perms.catalog.can_edit_is_published or user == product.owner %}
                                 <a href="{% url 'catalog:edit' product.pk %}" class="btn btn-sm btn-outline-secondary">Рeдактировать</a>
+                                {% endif %}
+
+                                {% if user.is_superuser%}
+                                <a href="{% url 'catalog:delete' product.pk %}" class="btn btn-sm btn-outline-secondary">Удалить</a>
                                 {% endif %}
                             </div>
                         </div>
