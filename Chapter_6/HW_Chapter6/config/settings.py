@@ -99,7 +99,7 @@ LOGOUT_REDIRECT_URL = "/"
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = "Elle-elle7@yandex.ru"
-EMAIL_HOST_PASSWORD = ""
+EMAIL_HOST_PASSWORD = "sncvphudmbfhmbhc"
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
