@@ -10,6 +10,8 @@ from django.forms import inlineformset_factory
 
 from catalog.forms import ProductModeratorForm
 
+from catalog.services import get_cached_products
+
 
 class ContactTemplateView(TemplateView):
     template_name = 'catalog/contacts.html'
@@ -22,6 +24,9 @@ class ProductListView(ListView):
         context = super().get_context_data(**kwargs)
         context['my_var'] = 'здесь должен быть номер активной версии'
         return context
+
+    def get_queryset(self):
+        return get_cached_products()
 
 
 class ProductDetailView(DetailView):

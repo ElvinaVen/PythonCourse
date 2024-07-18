@@ -1,10 +1,13 @@
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / '.env')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-SECRET_KEY = "django-insecure-i1a7=@wuu5*-os9b4gem)cx!x&my#d%2^9vy_af)ix5%zr3$82"
-
-DEBUG = True
+DEBUG = os.getenv('DEBUG', False) == 'True'
 
 ALLOWED_HOSTS = ["*"]
 
@@ -53,11 +56,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "ikea_sale",
-        "USER": "postgres",  # Пользователь для подключения
-        "PASSWORD": "postgres",  # Пароль для этого пользователя
-        "HOST": "127.0.0.1",  # Адрес, на котором развернут сервер БД
-        "PORT": 5432,  # Порт, на котором работает сервер БД
+        "NAME": os.getenv("NAME"),
+        "USER": os.getenv("POSTGRES_USER"),  # Пользователь для подключения
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),  # Пароль для этого пользователя
+        "HOST": os.getenv("HOST"),  # Адрес, на котором развернут сервер БД
+        "PORT": os.getenv("PORT"),  # Порт, на котором работает сервер БД
     }
 }
 
@@ -96,12 +99,12 @@ AUTH_USER_MODEL = "users.User"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_PORT = 465
-EMAIL_HOST_USER = "Elle-elle7@yandex.ru"
-EMAIL_HOST_PASSWORD = "sncvphudmbfhmbhc"
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = os.getenv("EMAIL_PORT")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", True) == 'False'
+EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL", False) == 'True'
 
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
@@ -111,7 +114,7 @@ if CACHE_ENABLED:
     CACHES = {
         "default": {
             "BACKEND": "django.core.cache.backends.redis.RedisCache",
-            "LOCATION": "redis://127.0.0.1:6379",
+            "LOCATION": os.getenv("LOCATION"),
         }
     }
 
