@@ -1,0 +1,21 @@
+{% extends 'main/index.html'%}
+{% block content %}
+
+<div class="col-6">
+    <div class="card-body">
+        <p class="card-text">Название рассылки: {{ object.newsletter_name }}</p>
+        <p class="card-text">дата и время первой отправки рассылки: {{ object.created_at }}</p>
+        <p class="card-text">периодичность: {{ object.periodicity }}</p>
+        <p class="card-text">статус рассылки: {{ object.status }}</p>
+        <p class="card-text">сообщение для клиентов: {{ object.message }}</p>
+        <p class="card-text">Имена клиентов: {{ object.client }}</p>
+
+
+        <div class="btn-group">
+            <a class="btn btn-primary" href="{% url 'main:index'%}"
+               role="button">Назад</a>
+        </div>
+    </div>¬
+</div>
+
+{% endblock %}

@@ -77,7 +77,7 @@ class Newsletter(models.Model):
     # owner
 
     def __str__(self):
-        return f"Рассылка под названием {self.newsletter_name}"
+        return f"Рассылка под названием '{self.newsletter_name}'"
 
     class Meta:
         verbose_name = "рассылка"
