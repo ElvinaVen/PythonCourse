@@ -8,11 +8,10 @@ class Client(models.Model):
     """Модель для хранения информации о клиенте
     Клиенты — это те, кто получает рассылки, а пользователи — те, кто создает эти рассылки."""
 
-    first_name = models.CharField(max_length=100, verbose_name='имя', help_text="Введите имя клиента")
-    last_name = models.CharField(max_length=100, verbose_name='фамилия', help_text="Введите фамилию клиента",
-                                 **NULLABLE)
+    first_name = models.CharField(max_length=100, verbose_name='имя')
+    last_name = models.CharField(max_length=100, verbose_name='фамилия', **NULLABLE)
     email = models.EmailField(max_length=100, verbose_name='email', unique=True)
-    comment = models.TextField(verbose_name="комментарий", help_text="Введите комментарий", **NULLABLE)
+    comment = models.TextField(verbose_name="комментарий", **NULLABLE)
 
     # owner
 
@@ -43,9 +42,9 @@ class Message(models.Model):
 class Newsletter(models.Model):
     """Модель для хранения информации о рассылке(настройки)"""
 
-    NEWSLETTER_STARTED = 'start'
-    NEWSLETTER_COMPLETED = 'finish'
-    NEWSLETTER_CREATED = 'create'
+    NEWSLETTER_STARTED = 'запущена'
+    NEWSLETTER_COMPLETED = 'завершена'
+    NEWSLETTER_CREATED = 'создана'
 
     STATUS_CHOICES = [
         (NEWSLETTER_STARTED, 'запущена'),
@@ -76,7 +75,7 @@ class Newsletter(models.Model):
     # owner
 
     def __str__(self):
-        return f"Рассылка под названием '{self.newsletter_name}'"
+        return f"Рассылка: '{self.newsletter_name}'"
 
     class Meta:
         verbose_name = "рассылка"

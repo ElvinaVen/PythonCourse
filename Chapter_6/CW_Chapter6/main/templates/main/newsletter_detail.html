@@ -2,25 +2,29 @@
 {% block content %}
 
 <div class="col-6">
-    <div class="card-body">
-        <p class="card-text">Название рассылки: {{ object.newsletter_name }}</p>
-        <p class="card-text">дата и время первой отправки рассылки: {{ object.created_at }}</p>
-        <p class="card-text">периодичность: {{ object.periodicity }}</p>
-        <p class="card-text">статус рассылки: {{ object.status }}</p>
-        <p class="card-text">сообщение для клиентов: {{ object.message }}</p>
-        <p class="card-text">Имена клиентов:
-        <ul>
-            {% for value in object.client.all.values_list %}
-            <li>{{value.1 }}</li>
-            {% endfor%}
-        </ul>
-        </p>
-        <div class="btn-group">
-            <a class="btn btn-primary" href="{% url 'main:index'%}"
-               role="button">Назад</a>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">Название рассылки: {{ object.newsletter_name }}</p>
+            <p class="card-text">дата и время первой отправки рассылки: {{ object.created_at }}</p>
+            <p class="card-text">периодичность: {{ object.periodicity }}</p>
+            <p class="card-text">статус рассылки: {{ object.status }}</p>
+            <p class="card-text">сообщение для клиентов: {{ object.message }}</p>
+            <div class="btn-group">
+                <a class="btn btn-primary" href="{% url 'main:list_newsletter'%}"
+                   role="button">Назад</a>
+            </div>
         </div>
     </div>
-
 </div>
-
+<div class="col-3">
+    <div class="card">
+        <div class="card-body">Список клиентов
+            <ul>
+                {% for value in object.client.all.values_list %}
+                <li>{{value.1 }}</li>
+                {% endfor%}
+            </ul>
+        </div>
+    </div>
+</div>
 {% endblock %}
