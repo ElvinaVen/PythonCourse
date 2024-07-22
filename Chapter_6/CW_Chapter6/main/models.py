@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 NULLABLE = {"null": True, "blank": True}
 
@@ -62,17 +63,15 @@ class Newsletter(models.Model):
         (WEEK_PERIODICITY, 'раз в неделю'),
     ]
 
-    newsletter_name = models.CharField(max_length=150, verbose_name="Название самой рассылки",
-                                       help_text="введите название рассылки")
-    created_at = models.DateTimeField(verbose_name="дата и время первой отправки рассылки", **NULLABLE)
+    newsletter_name = models.CharField(max_length=150, verbose_name="Название рассылки")
+    created_at = models.DateTimeField(verbose_name="дата и время первой отправки рассылки", **NULLABLE, default=(timezone.now() + timezone.timedelta(days=1)),)
     periodicity = models.CharField(max_length=100, verbose_name='периодичность', choices=PERIODICITY_CHOICES,
                                    default=MONTH_PERIODICITY)
     status = models.CharField(max_length=100, verbose_name='статус рассылки',
                               default=NEWSLETTER_CREATED, choices=STATUS_CHOICES)
 
-    message = models.OneToOneField(Message, on_delete=models.SET_NULL, verbose_name='сообщение для клиентов',
-                                   help_text='Укажите сообщение для клиентов', **NULLABLE)
-    client = models.ManyToManyField(Client, verbose_name='Имена клиентов',help_text='Укажите Имена клиентов')
+    message = models.ForeignKey(Message, on_delete=models.CASCADE, verbose_name='сообщение для клиентов', **NULLABLE)
+    client = models.ManyToManyField(Client, verbose_name='Имена клиентов')
 
     # owner
 

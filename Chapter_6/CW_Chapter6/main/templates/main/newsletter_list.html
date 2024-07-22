@@ -1,30 +1,32 @@
 {% extends 'main/index.html' %}
-
 {% block content %}
-{% for object in object_list %}
-<div class="col-md-4">
-    <div class="card mb-4 box-shadow">
+<div class="col-12">
+    <a class="btn btn-outline-primary" href="{% url 'main:create_newsletter' %}">Добавить рассылку</a>
+</div>
 
-        <div class="card-body">
-            <p class="card-text">
-                {{object|title}}
-            </p>
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
+    {% for object in object_list %}
+    <div class="col-12">
+        <div class="card mb-4 box-shadow">
+            <div class="card-body">
+                <p class="card-text">
+                    {{object|title}}
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a class="btn btn-outline-primary" href="{% url 'main:view_newsletter' object.pk %}"
+                           role="button">Просмотр</a>
 
-                    <a class="btn btn-outline-primary" href="{% url 'main:view_newsletter' object.pk %}"
-                       role="button">Просмотр</a>
+                        <a class="btn btn-outline-primary" href="{% url 'main:update_newsletter' object.pk %}"
+                           role="button">Редактировать</a>
 
-                    <a class="btn btn-outline-primary" href="{#}"
-                       role="button">Редактировать</a>
-
-                    <a class="btn btn-outline-primary" href="{#}"
-                       role="button">Удалить</a>
-
+                        <a class="btn btn-outline-primary" href="{% url 'main:delete_newsletter' object.pk %}"
+                           role="button">Удалить</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    {% endfor %}
-    {% endblock %}
+
+
+{% endfor %}
+{% endblock %}
