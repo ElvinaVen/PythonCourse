@@ -1,0 +1,17 @@
+{% extends 'main/index.html'%}
+{% block content %}
+
+<div class="col-6">
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">тема письма: {{ object.message_title }}</p>
+            <p class="card-text">тело письма: {{ object.message_body }}</p>
+
+            <div class="btn-group">
+                <a class="btn btn-primary" href="{% url 'main:list_message'%}"
+                   role="button">Назад</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

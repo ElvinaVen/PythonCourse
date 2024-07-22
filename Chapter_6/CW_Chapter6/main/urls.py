@@ -2,7 +2,7 @@ from django.urls import path
 from main.apps import MainConfig
 from main.views import NewsletterListView, NewsletterDetailView, NewsletterCreateView, NewsletterUpdateView, \
     NewsletterDeleteView, IndexView, ClientListView, ClientCreateView, ClientUpdateView, ClientDeleteView, \
-    ClientDetailView
+    ClientDetailView,MessageListView, MessageDetailView, MessageCreateView, MessageUpdateView, MessageDeleteView
 
 app_name = MainConfig.name
 
@@ -20,4 +20,10 @@ urlpatterns = [
     path('client/create/', ClientCreateView.as_view(), name='create_client'),
     path('client/edit/<int:pk>/', ClientUpdateView.as_view(), name='update_client'),
     path('client/delete/<int:pk>/', ClientDeleteView.as_view(), name='delete_client'),
+
+    path('message/', MessageListView.as_view(), name='list_message'),
+    path('message/<int:pk>/', MessageDetailView.as_view(), name='view_message'),
+    path('message/create/', MessageCreateView.as_view(), name='create_message'),
+    path('message/edit/<int:pk>/', MessageUpdateView.as_view(), name='update_message'),
+    path('message/delete/<int:pk>/', MessageDeleteView.as_view(), name='delete_message'),
 ]

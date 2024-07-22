@@ -3,7 +3,8 @@ from random import random
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
-from main.models import Newsletter, Client
+from main.models import Newsletter, Client, Message
+
 
 
 class IndexView(TemplateView):
@@ -107,3 +108,47 @@ class ClientDeleteView(DeleteView):
         'title': "Клиенты",
     }
     success_url = reverse_lazy('main:list_client')
+
+
+class MessageListView(ListView):
+    model = Message
+    extra_context = {
+        'title': "Сообщения",
+    }
+    template_name = 'main/message_list.html'
+    success_url = reverse_lazy('main:list_message')
+
+
+class MessageCreateView(CreateView):
+    model = Message
+    extra_context = {
+        'title': "Сообщения",
+    }
+    fields = '__all__'
+    success_url = reverse_lazy('main:list_message')
+
+
+class MessageDetailView(DetailView):
+    model = Message
+    extra_context = {
+        'title': "Сообщения",
+    }
+    success_url = reverse_lazy('main:list_message')
+    # template_name = 'main/newsletter_detail.html'
+
+
+class MessageUpdateView(UpdateView):
+    model = Message
+    extra_context = {
+        'title': "Сообщения",
+    }
+    fields = '__all__'
+    success_url = reverse_lazy('main:list_message')
+
+
+class MessageDeleteView(DeleteView):
+    model = Message
+    extra_context = {
+        'title': "Сообщения",
+    }
+    success_url = reverse_lazy('main:list_message')
