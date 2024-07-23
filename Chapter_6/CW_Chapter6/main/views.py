@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from main.models import Newsletter, Client, Message
 
+from main.forms import NewsletterForm, MessageForm, ClientForm
 
 
 class IndexView(TemplateView):
@@ -42,10 +43,10 @@ class NewsletterDetailView(DetailView):
 
 class NewsletterCreateView(CreateView):
     model = Newsletter
+    form_class = NewsletterForm
     extra_context = {
         'title': "Рассылки ",
     }
-    fields = '__all__'
     success_url = reverse_lazy('main:list_newsletter')
 
 
@@ -54,7 +55,7 @@ class NewsletterUpdateView(UpdateView):
     extra_context = {
         'title': "Рассылки ",
     }
-    fields = '__all__'
+    form_class = NewsletterForm
     success_url = reverse_lazy('main:list_newsletter')
 
 
@@ -80,7 +81,7 @@ class ClientCreateView(CreateView):
     extra_context = {
         'title': "Клиенты",
     }
-    fields = '__all__'
+    form_class = ClientForm
     success_url = reverse_lazy('main:list_client')
 
 
@@ -98,7 +99,7 @@ class ClientUpdateView(UpdateView):
     extra_context = {
         'title': "Клиенты",
     }
-    fields = '__all__'
+    form_class = ClientForm
     success_url = reverse_lazy('main:list_client')
 
 
@@ -124,7 +125,7 @@ class MessageCreateView(CreateView):
     extra_context = {
         'title': "Сообщения",
     }
-    fields = '__all__'
+    form_class = MessageForm
     success_url = reverse_lazy('main:list_message')
 
 
@@ -142,7 +143,7 @@ class MessageUpdateView(UpdateView):
     extra_context = {
         'title': "Сообщения",
     }
-    fields = '__all__'
+    form_class = MessageForm
     success_url = reverse_lazy('main:list_message')
 
 

@@ -1,6 +1,6 @@
-# from django import forms
+from django import forms
 #
-# from main.models import Newsletter
+from main.models import Newsletter, Client, Message
 #
 #
 # class StyleFormMixin:
@@ -10,8 +10,19 @@
 #             field.widget.attrs['class'] = 'form-control'
 #
 #
-# class StudentForm(StyleFormMixin, forms.ModelForm):
-#
-#     class Meta:
-#         model = Newsletter
-#         fields = '__all__'
+class NewsletterForm(forms.ModelForm):
+    class Meta:
+        model = Newsletter
+        fields = '__all__'
+
+
+class ClientForm(forms.ModelForm):
+    class Meta:
+        model = Client
+        fields = '__all__'
+
+
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = '__all__'
