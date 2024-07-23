@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/config/settings.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/config/urls.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/main/forms.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/main/models.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/main/urls.py" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/main/views.py" charset="UTF-8" />
