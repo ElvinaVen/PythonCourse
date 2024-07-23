@@ -63,7 +63,11 @@ class Newsletter(models.Model):
     ]
 
     newsletter_name = models.CharField(max_length=150, verbose_name="Название рассылки")
-    created_at = models.DateTimeField(verbose_name="дата и время первой отправки рассылки", **NULLABLE, default=(timezone.now() + timezone.timedelta(days=1)),)
+    # created_at = models.DateTimeField(verbose_name="дата и время первой отправки рассылки", **NULLABLE, default=(timezone.now() + timezone.timedelta(days=1)),)
+    date_start = models.DateField(verbose_name='Дата начала рассылки', default=timezone.now, **NULLABLE)
+    date_next = models.DateTimeField(verbose_name="следующая дата рассылки", default=timezone.now, **NULLABLE)
+    date_end = models.DateField(verbose_name='Дата окончания рассылки', default=timezone.now, **NULLABLE)
+    start_time = models.TimeField(verbose_name='Время рассылки', default=timezone.now, **NULLABLE)
     periodicity = models.CharField(max_length=100, verbose_name='периодичность', choices=PERIODICITY_CHOICES,
                                    default=MONTH_PERIODICITY)
     status = models.CharField(max_length=100, verbose_name='статус рассылки',
