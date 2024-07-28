@@ -19,7 +19,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'main',
-    'django_crontab',
+    # 'django_crontab',
+    'django_apscheduler',
 ]
 
 MIDDLEWARE = [
@@ -106,7 +107,22 @@ EMAIL_USE_SSL = True
 
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
-CRONJOBS = [
-    ('*/1 * * * *', 'main.cron.send_newsletter_periodic_email')
-]
+# RUN_M/AIN =
+# CRONJOBS = [
+#     ('*/1 * * * *', 'main.cron.send_newsletter_periodic_email')
+# ]
+# # Format string for displaying run time timestamps in the Django admin site. The default
+# # just adds seconds to the standard Django format, which is useful for displaying the timestamps
+# # for jobs that are scheduled to run on intervals of less than one minute.
+# #
+# # See https://docs.djangoproject.com/en/dev/ref/settings/#datetime-format for format string
+# # syntax details.
+# APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
+#
+# # Maximum run time allowed for jobs that are triggered manually via the Django admin site, which
+# # prevents admin site HTTP requests from timing out.
+# #
+# # Longer running jobs should probably be handed over to a background task processing library
+# # that supports multiple background worker processes instead (e.g. Dramatiq, Celery, Django-RQ,
+# # etc. See: https://djangopackages.org/grids/g/workers-queues-tasks/ for popular options).
+# APSCHEDULER_RUN_NOW_TIMEOUT = 25  # Seconds
