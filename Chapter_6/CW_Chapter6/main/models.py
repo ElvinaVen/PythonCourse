@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 
 NULLABLE = {"null": True, "blank": True}
 
@@ -55,19 +54,22 @@ class Newsletter(models.Model):
     MONTH_PERIODICITY = 'month'
     DAY_PERIODICITY = 'day'
     WEEK_PERIODICITY = 'week'
+    MINUTE_PERIODICITY = 'minute'
 
     PERIODICITY_CHOICES = [
         (MONTH_PERIODICITY, 'раз в месяц'),
         (DAY_PERIODICITY, 'раз в день'),
         (WEEK_PERIODICITY, 'раз в неделю'),
+        (MINUTE_PERIODICITY, 'раз в минуту'),
     ]
 
     newsletter_name = models.CharField(max_length=150, verbose_name="Название рассылки")
-    # created_at = models.DateTimeField(verbose_name="дата и время первой отправки рассылки", **NULLABLE, default=(timezone.now() + timezone.timedelta(days=1)),)
-    # date_start = models.DateField(verbose_name='Дата начала рассылки', default=timezone.now, **NULLABLE)
-    # date_next = models.DateTimeField(verbose_name="следующая дата рассылки", default=timezone.now, **NULLABLE)
-    # date_end = models.DateField(verbose_name='Дата окончания рассылки', default=timezone.now, **NULLABLE)
-    # start_time = models.TimeField(verbose_name='Время рассылки', default=timezone.now, **NULLABLE)
+    # created_at = models.DateTimeField(verbose_name="дата и время первой отправки рассылки", **NULLABLE,
+    # default=(timezone.now() + timezone.timedelta(days=1)),) date_start = models.DateField(verbose_name='Дата начала
+    # рассылки', default=timezone.now, **NULLABLE) date_next = models.DateTimeField(verbose_name="следующая дата
+    # рассылки", default=timezone.now, **NULLABLE) date_end = models.DateField(verbose_name='Дата окончания
+    # рассылки', default=timezone.now, **NULLABLE) start_time = models.TimeField(verbose_name='Время рассылки',
+    # default=timezone.now, **NULLABLE)
     start_time = models.DateTimeField(verbose_name='время начала рассылки', **NULLABLE)
     end_time = models.DateTimeField(verbose_name='время окончания рассылки', **NULLABLE)
     periodicity = models.CharField(max_length=100, verbose_name='периодичность', choices=PERIODICITY_CHOICES,
@@ -100,7 +102,7 @@ class Log(models.Model):
     ]
 
     time = models.DateTimeField(
-        verbose_name="Дата и время попытки отправки")
+        verbose_name="Дата и время попытки отправки", auto_now_add=True)
     status = models.CharField(max_length=50, verbose_name='Cтатус рассылки', choices=STATUS_VARIANTS)
     server_response = models.CharField(
         max_length=150, verbose_name="Ответ сервера почтового сервиса", **NULLABLE
