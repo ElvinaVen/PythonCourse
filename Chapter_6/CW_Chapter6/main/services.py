@@ -27,7 +27,7 @@ def send_newsletter_email(objects):
             objects.status = 'запущена'
             objects.save()
     except smtplib.SMTPException as e:
-        log=Log.objects.create(newsletter=objects, server_response=e)
+        log = Log.objects.create(newsletter=objects, server_response=e)
         log.save()
 
 
