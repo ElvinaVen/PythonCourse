@@ -34,31 +34,29 @@ def send_newsletter_email(objects):
 def send_newsletter_periodic_email():
     zone = pytz.timezone(settings.TIME_ZONE)
     current_datetime = datetime.now(zone)
-    print(f'дата - {current_datetime}')
+    print(f'Текущее время - {current_datetime}')
 
     for obj in Newsletter.objects.filter(status__in=('создана', 'запущена')):
         if obj.start_time < current_datetime < obj.end_time:
 
             log = Log.objects.filter(newsletter=obj)
-            print(f'первый - {log}')
             if log.exists():
                 last_log = log.order_by('time').last()
                 current_timedelta = current_datetime - last_log.time
-                print(current_timedelta)
 
-                if obj.periodicity == 'day' and current_timedelta <= timedelta(days=1):
+                if obj.periodicity == 'day' and current_timedelta >= timedelta(days=1):
                     send_newsletter_email(obj)
-                    print(f'раз в день')
+                    print(f'Выполнена рассылка раз в день')
                 elif obj.periodicity == 'week' and current_timedelta >= timedelta(weeks=1):
                     send_newsletter_email(obj)
-                    print(f'раз в неделю')
+                    print(f'Выполнена рассылка раз в неделю')
                 elif obj.periodicity == 'month' and current_timedelta >= timedelta(
                         weeks=4):
                     send_newsletter_email(obj)
-                    print(f'раз в месяц')
+                    print(f'Выполнена рассылка раз в месяц')
                 elif obj.periodicity == 'minute' and current_timedelta >= timedelta(minutes=1):
                     send_newsletter_email(obj)
-                    print(f'раз в minute')
+                    print(f'Выполнена рассылка раз в минуту')
             else:
                 send_newsletter_email(obj)
                 print(f'иначе')
@@ -72,7 +70,7 @@ def start_scheduler():
 
     # Проверка, добавлена ли задача уже
     if not scheduler.get_jobs():
-        scheduler.add_job(send_newsletter_periodic_email, 'interval', seconds=30)
+        scheduler.add_job(send_newsletter_periodic_email, 'interval', seconds=3600)
 
     if not scheduler.running:
         scheduler.start()
