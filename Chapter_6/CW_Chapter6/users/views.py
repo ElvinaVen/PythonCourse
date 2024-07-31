@@ -2,12 +2,14 @@ import secrets
 import string
 import random
 
+from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.mixins import PermissionRequiredMixin
 # from django.contrib.auth.forms import PasswordResetForm
 # from django.contrib.auth.views import PasswordResetView
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, ListView
 
 from users.models import User
 
@@ -81,3 +83,19 @@ def reset_password(request):
         return render(request, 'users/reset_password.html', context)
 
     return render(request, 'users/reset_password.html')
+
+
+class UserListView(PermissionRequiredMixin, ListView):
+    model = User
+    permission_required = 'users.view_all_users'
+
+
+@permission_required('users.deactivate_user')
+def toggle_activity(request, pk):
+    user = User.objects.get(pk=pk)
+    if user.is_active:
+        user.is_active = False
+    else:
+        user.is_active = True
+    user.save()
+    return redirect(reverse('users:users_list'))

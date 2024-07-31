@@ -4,6 +4,8 @@ from main.views import NewsletterListView, NewsletterDetailView, NewsletterCreat
     NewsletterDeleteView, IndexView, ClientListView, ClientCreateView, ClientUpdateView, ClientDeleteView, \
     ClientDetailView,MessageListView, MessageDetailView, MessageCreateView, MessageUpdateView, MessageDeleteView
 
+from main.views import LogListView
+
 app_name = MainConfig.name
 
 urlpatterns = [
@@ -26,4 +28,6 @@ urlpatterns = [
     path('message/create/', MessageCreateView.as_view(), name='create_message'),
     path('message/edit/<int:pk>/', MessageUpdateView.as_view(), name='update_message'),
     path('message/delete/<int:pk>/', MessageDeleteView.as_view(), name='delete_message'),
+
+    path('log_list/', LogListView.as_view(), name='log_list'),
 ]

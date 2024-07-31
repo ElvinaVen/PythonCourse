@@ -8,6 +8,7 @@
             <p class="card-text">периодичность: {{ object.periodicity }}</p>
             <p class="card-text">статус рассылки: {{ object.status }}</p>
             <p class="card-text">сообщение для клиентов: {{ object.message }}</p>
+            <p class="card-text">Владелец: {{ object.owner }}</p>
             <div class="btn-group">
                 <a class="btn btn-primary" href="{% url 'main:list_newsletter'%}"
                    role="button">Назад</a>
