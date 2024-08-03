@@ -1,11 +1,15 @@
 from random import random
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
-from main.models import Newsletter, Client, Message
+from main.models import Newsletter, Client, Message, Log
 
 from main.forms import NewsletterForm, MessageForm, ClientForm
+
+from main.forms import ManagerNewsletterForm
 
 
 class IndexView(TemplateView):
@@ -23,7 +27,7 @@ class IndexView(TemplateView):
         return context_data
 
 
-class NewsletterListView(ListView):
+class NewsletterListView(LoginRequiredMixin, ListView):
     model = Newsletter
     extra_context = {
         'title': "Рассылки ",
@@ -31,17 +35,31 @@ class NewsletterListView(ListView):
     template_name = 'main/newsletter_list.html'
     success_url = reverse_lazy('main:newsletter_list')
 
+    def get_queryset(self, queryset=None):
+        queryset = super().get_queryset()
+        user = self.request.user
+        if not user.is_superuser and not user.groups.filter(name='manager'):
+            queryset = queryset.filter(owner=self.request.user)
+        return queryset
 
-class NewsletterDetailView(DetailView):
+
+class NewsletterDetailView(LoginRequiredMixin, DetailView):
     model = Newsletter
     extra_context = {
         'title': "Рассылки ",
     }
     success_url = reverse_lazy('main:list_newsletter')
-    # template_name = 'main/newsletter_detail.html'
+
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        user = self.request.user
+        if not user.is_superuser and not user.groups.filter(name='manager') and user != self.object.owner:
+            raise PermissionDenied
+        else:
+            return self.object
 
 
-class NewsletterCreateView(CreateView):
+class NewsletterCreateView(LoginRequiredMixin, CreateView):
     model = Newsletter
     form_class = NewsletterForm
     extra_context = {
@@ -49,8 +67,15 @@ class NewsletterCreateView(CreateView):
     }
     success_url = reverse_lazy('main:list_newsletter')
 
+    def form_valid(self, form):
+        newsletter = form.save()
+        user = self.request.user
+        newsletter.owner = user
+        newsletter.save()
+        return super().form_valid(form)
 
-class NewsletterUpdateView(UpdateView):
+
+class NewsletterUpdateView(LoginRequiredMixin, UpdateView):
     model = Newsletter
     extra_context = {
         'title': "Рассылки ",
@@ -58,16 +83,34 @@ class NewsletterUpdateView(UpdateView):
     form_class = NewsletterForm
     success_url = reverse_lazy('main:list_newsletter')
 
+    def get_form_class(self):
+        """
+        Функция, определяющая поля для редактирования в зависимости от прав пользователя
+        """
+        user = self.request.user
+        if user == self.object.owner or user.is_superuser:
+            return NewsletterForm
+        elif user.has_perm('main.deactivate_mailing'):
+            return ManagerNewsletterForm
+        else:
+            raise PermissionDenied
 
-class NewsletterDeleteView(DeleteView):
+
+class NewsletterDeleteView(LoginRequiredMixin, DeleteView):
     model = Newsletter
     extra_context = {
         'title': "Рассылки ",
     }
     success_url = reverse_lazy('main:list_newsletter')
 
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        if self.request.user == self.object.owner or self.request.user.is_superuser:
+            return self.object
+        raise PermissionDenied
 
-class ClientListView(ListView):
+
+class ClientListView(LoginRequiredMixin, ListView):
     model = Client
     extra_context = {
         'title': "Клиенты",
@@ -75,8 +118,15 @@ class ClientListView(ListView):
     template_name = 'main/client_list.html'
     success_url = reverse_lazy('main:list_client')
 
+    def get_queryset(self, queryset=None):
+        queryset = super().get_queryset()
+        user = self.request.user
+        if not user.is_superuser and not user.groups.filter(name='manager'):
+            queryset = queryset.filter(owner=self.request.user)
+        return queryset
 
-class ClientCreateView(CreateView):
+
+class ClientCreateView(LoginRequiredMixin, CreateView):
     model = Client
     extra_context = {
         'title': "Клиенты",
@@ -84,17 +134,29 @@ class ClientCreateView(CreateView):
     form_class = ClientForm
     success_url = reverse_lazy('main:list_client')
 
+    def form_valid(self, form):
+        client = form.save()
+        user = self.request.user
+        client.owner = user
+        client.save()
+        return super().form_valid(form)
 
-class ClientDetailView(DetailView):
+
+class ClientDetailView(LoginRequiredMixin, DetailView):
     model = Client
     extra_context = {
         'title': "Клиенты",
     }
     success_url = reverse_lazy('main:list_client')
-    # template_name = 'main/newsletter_detail.html'
+
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        if self.request.user == self.object.owner or self.request.user.is_superuser:
+            return self.object
+        raise PermissionDenied
 
 
-class ClientUpdateView(UpdateView):
+class ClientUpdateView(LoginRequiredMixin, UpdateView):
     model = Client
     extra_context = {
         'title': "Клиенты",
@@ -102,16 +164,28 @@ class ClientUpdateView(UpdateView):
     form_class = ClientForm
     success_url = reverse_lazy('main:list_client')
 
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        if self.request.user == self.object.owner or self.request.user.is_superuser:
+            return self.object
+        raise PermissionDenied
 
-class ClientDeleteView(DeleteView):
+
+class ClientDeleteView(LoginRequiredMixin, DeleteView):
     model = Client
     extra_context = {
         'title': "Клиенты",
     }
     success_url = reverse_lazy('main:list_client')
 
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        if self.request.user == self.object.owner or self.request.user.is_superuser:
+            return self.object
+        raise PermissionDenied
 
-class MessageListView(ListView):
+
+class MessageListView(LoginRequiredMixin, ListView):
     model = Message
     extra_context = {
         'title': "Сообщения",
@@ -119,8 +193,15 @@ class MessageListView(ListView):
     template_name = 'main/message_list.html'
     success_url = reverse_lazy('main:list_message')
 
+    def get_queryset(self, queryset=None):
+        queryset = super().get_queryset()
+        user = self.request.user
+        if not user.is_superuser and not user.groups.filter(name='manager'):
+            queryset = queryset.filter(owner=self.request.user)
+        return queryset
 
-class MessageCreateView(CreateView):
+
+class MessageCreateView(LoginRequiredMixin, CreateView):
     model = Message
     extra_context = {
         'title': "Сообщения",
@@ -128,17 +209,29 @@ class MessageCreateView(CreateView):
     form_class = MessageForm
     success_url = reverse_lazy('main:list_message')
 
+    def form_valid(self, form):
+        message = form.save()
+        user = self.request.user
+        message.owner = user
+        message.save()
+        return super().form_valid(form)
 
-class MessageDetailView(DetailView):
+
+class MessageDetailView(LoginRequiredMixin, DetailView):
     model = Message
     extra_context = {
         'title': "Сообщения",
     }
     success_url = reverse_lazy('main:list_message')
-    # template_name = 'main/newsletter_detail.html'
+
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        if self.request.user == self.object.owner or self.request.user.is_superuser:
+            return self.object
+        raise PermissionDenied
 
 
-class MessageUpdateView(UpdateView):
+class MessageUpdateView(LoginRequiredMixin, UpdateView):
     model = Message
     extra_context = {
         'title': "Сообщения",
@@ -146,10 +239,29 @@ class MessageUpdateView(UpdateView):
     form_class = MessageForm
     success_url = reverse_lazy('main:list_message')
 
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        if self.request.user == self.object.owner or self.request.user.is_superuser:
+            return self.object
+        raise PermissionDenied
 
-class MessageDeleteView(DeleteView):
+
+class MessageDeleteView(LoginRequiredMixin, DeleteView):
     model = Message
     extra_context = {
         'title': "Сообщения",
     }
     success_url = reverse_lazy('main:list_message')
+
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        if self.request.user == self.object.owner or self.request.user.is_superuser:
+            return self.object
+        raise PermissionDenied
+
+
+class LogListView(LoginRequiredMixin, ListView):
+    """
+    Контроллер отвечающий за отображение списка попыток рассылок
+    """
+    model = Log

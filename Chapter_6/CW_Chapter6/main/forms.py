@@ -28,3 +28,9 @@ class MessageForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Message
         fields = '__all__'
+
+
+class ManagerNewsletterForm(StyleFormMixin, forms.ModelForm):
+    class Meta:
+        model = Newsletter
+        fields = ('status',)
