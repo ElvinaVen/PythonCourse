@@ -3,10 +3,13 @@ from datetime import datetime, timedelta
 
 import pytz
 from django.conf import settings
+from django.core.cache import cache
 from django.core.mail import send_mail
 
 from main.models import Newsletter, Message, Log
 from apscheduler.schedulers.background import BackgroundScheduler
+
+from config.settings import CACHE_ENABLED
 
 
 def send_newsletter_email(objects):
@@ -74,3 +77,20 @@ def start_scheduler():
 
     if not scheduler.running:
         scheduler.start()
+
+
+def get_newsletter_from_cache():
+    """
+    Получение списка рассылок из кэша. Если кэш пуст,то получение из БД.
+    """
+    if not CACHE_ENABLED:
+        return Newsletter.objects.all()
+    else:
+        key = 'newsletter_list'
+        newsletter = cache.get(key)
+        if newsletter is not None:
+            return newsletter
+        else:
+            newsletter = Newsletter.objects.all()
+            cache.set(key, newsletter)
+            return newsletter
