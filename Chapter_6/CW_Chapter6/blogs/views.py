@@ -6,28 +6,22 @@ from django.views.generic import CreateView, ListView, DetailView, UpdateView, D
 
 from blogs.models import Blog
 
+from blogs.services import get_articles_from_cache
+
 
 class BlogCreateView(CreateView):
     model = Blog
     fields = ('title', 'body', 'image')
     success_url = reverse_lazy('blogs:list')
 
-    # def form_valid(self, form):
-    #     if form.is_valid():
-    #         new_blog = form.save()
-    #         new_blog.slug = slugify(new_blog.title)
-    #         new_blog.save()
-    #
-    #     return super().form_valid(form)
-
 
 class BlogListView(ListView):
     model = Blog
 
-    # def get_queryset(self, *args, **kwargs):
-    #     queryset = super().get_queryset(*args, **kwargs)
-    #     queryset = queryset.filter(is_published=True)
-    #     return querysett
+    def get_queryset(self, *args, **kwargs):
+        queryset = get_articles_from_cache()
+        return queryset
+
 
 
 class BlogDetailView(DetailView):

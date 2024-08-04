@@ -12,7 +12,6 @@ from main.forms import NewsletterForm, MessageForm, ClientForm
 from main.forms import ManagerNewsletterForm
 from main.services import get_newsletter_from_cache
 
-from blogs.models import Blog
 
 from blogs.services import get_articles_from_cache
 
@@ -28,7 +27,6 @@ class IndexView(TemplateView):
         context_data['mail_count'] = len(get_newsletter_from_cache())
         context_data['active_mail_count'] = len(Newsletter.objects.filter(status__in=('создана', 'запущена')))
         context_data['client_count'] = len(Client.objects.all())
-        # context_data['object_list'] = random.sample(list(Blog.objects.all()), 3)
         context_data['random_blogs'] = get_articles_from_cache().order_by('?')[:3]
         return context_data
 

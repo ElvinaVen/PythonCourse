@@ -86,7 +86,7 @@ def get_newsletter_from_cache():
     if not CACHE_ENABLED:
         return Newsletter.objects.all()
     else:
-        key = 'newsletter_list'
+        key = 'newsletters_list'
         newsletter = cache.get(key)
         if newsletter is not None:
             return newsletter
