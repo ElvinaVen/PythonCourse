@@ -2,6 +2,9 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/.env" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/blogs/models.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/blogs/services.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/blogs/templatetags/my_tags.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/config/settings.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/config/urls.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/main/cron.py" charset="UTF-8" />

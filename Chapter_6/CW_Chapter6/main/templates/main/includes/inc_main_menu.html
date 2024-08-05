@@ -6,6 +6,7 @@
             <li><a href="{% url 'main:list_client' %}" class="text-white">Клиенты</a></li>
             <li><a href="{% url 'main:list_newsletter' %}" class="text-white">Рассылки</a></li>
             <li><a href="{% url 'main:log_list' %}" class="text-white">Попытки рассылок</a></li>
+            <li><a href="{% url 'blogs:list' %}" class="text-white">Статьи</a></li>
             {% if perms.users.view_all_users or user.is_superuser %}
             <li><a href="{% url 'users:users_list' %}" class="text-white">Список пользователей</a></li>
             {% endif %}

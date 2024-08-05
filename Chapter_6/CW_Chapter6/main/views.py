@@ -2,7 +2,7 @@ from random import random
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
-from django.shortcuts import render
+
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from main.models import Newsletter, Client, Message, Log
@@ -10,6 +10,10 @@ from main.models import Newsletter, Client, Message, Log
 from main.forms import NewsletterForm, MessageForm, ClientForm
 
 from main.forms import ManagerNewsletterForm
+from main.services import get_newsletter_from_cache
+
+
+from blogs.services import get_articles_from_cache
 
 
 class IndexView(TemplateView):
@@ -20,10 +24,10 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
-        # context_data['mail_count'] = get_cache_for_mailings()
-        # context_data['active_mail_count'] = len(Newsletter.objects.filter(is_active=True))
+        context_data['mail_count'] = len(get_newsletter_from_cache())
+        context_data['active_mail_count'] = len(Newsletter.objects.filter(status__in=('создана', 'запущена')))
         context_data['client_count'] = len(Client.objects.all())
-        # context_data['object_list'] = random.sample(list(Blog.objects.all()), 3)
+        context_data['random_blogs'] = get_articles_from_cache().order_by('?')[:3]
         return context_data
 
 
