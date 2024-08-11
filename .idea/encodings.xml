@@ -52,6 +52,8 @@
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/manage.py" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/requirements.txt" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/vehicle/models.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/vehicle/serializers.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/vehicle/urls.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/venv/Lib/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/venv/Lib/site-packages/setuptools-72.1.0.dist-info/WHEEL" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/venv/Lib/site-packages/setuptools/build_meta.py" charset="UTF-8" />
