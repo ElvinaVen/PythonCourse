@@ -6,20 +6,28 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('vehicle', '0001_initial'),
+        ("vehicle", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Moto',
+            name="Moto",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=50, verbose_name='название')),
-                ('description', models.TextField(verbose_name='описание')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=50, verbose_name="название")),
+                ("description", models.TextField(verbose_name="описание")),
             ],
             options={
-                'verbose_name': 'мотоцикл',
-                'verbose_name_plural': 'мотоциклы',
+                "verbose_name": "мотоцикл",
+                "verbose_name_plural": "мотоциклы",
             },
         ),
     ]
