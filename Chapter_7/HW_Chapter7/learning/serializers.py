@@ -1,17 +1,32 @@
-from rest_framework import serializers
+from rest_framework.serializers import ModelSerializer, SerializerMethodField
 
 from learning.models import Course, Lesson
 
 
-class CourseSerializer(serializers.ModelSerializer):
+class CourseSerializer(ModelSerializer):
 
     class Meta:
         model = Course
         fields = "__all__"
 
 
-class LessonSerializer(serializers.ModelSerializer):
+class LessonSerializer(ModelSerializer):
 
     class Meta:
         model = Lesson
         fields = "__all__"
+
+
+class CourseDetailSerializer(ModelSerializer):
+    lessons_count = SerializerMethodField()
+    lessons = LessonSerializer(many=True, read_only=True)
+
+    def get_lessons_count(self, obj):
+        return obj.lessons.count()
+
+    class Meta:
+        model = Course
+        fields = ('course_name', 'lessons_count', 'lessons')
+
+
+
