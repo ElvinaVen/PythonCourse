@@ -26,7 +26,11 @@ class Lesson(models.Model):
     )
     url_video = models.URLField(max_length=200, **NULLABLE)
     course = models.ForeignKey(
-        Course, on_delete=models.SET_NULL, related_name='lessons', verbose_name="курс", **NULLABLE
+        Course,
+        on_delete=models.SET_NULL,
+        related_name="lessons",
+        verbose_name="курс",
+        **NULLABLE,
     )
 
     def __str__(self):
