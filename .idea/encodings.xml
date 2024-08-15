@@ -13,6 +13,7 @@
     <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/main/models.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/main/urls.py" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/main/views.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/requirements.txt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/users/forms.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/users/models.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/users/templates/users/reset_password.html" charset="UTF-8" />
@@ -22,19 +23,41 @@
     <file url="file://$PROJECT_DIR$/Chapter_6/CW_Chapter6/users/views.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/.env" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/catalog/services.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/grups.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/manage.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/product.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/requirements.txt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/users/forms.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/users/models.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/users/templates/users/reset_password.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/users/templates/users/user_form.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/users/urls.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/users/views.py" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/venv/lib/site-packages/psycopg2/__init__.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/venv/Lib/site-packages/psycopg2/__init__.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/Lessons20/project6_1/data.json" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/Lessons20/project6_1/users/forms.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/Lessons20/project6_1/users/models.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/Lessons20/project6_1/users/templates/users/user_form.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/Lessons20/project6_1/users/views.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/.env" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/config/settings.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/learning/models.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/users/models.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/.env" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/config/__init__.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/config/asgi.py" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/config/settings.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/config/urls.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/config/wsgi.py" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/manage.py" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/requirements.txt" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/users/urls.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/vehicle/models.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/vehicle/serializers.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/vehicle/urls.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/venv/Lib/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/venv/Lib/site-packages/setuptools-72.1.0.dist-info/WHEEL" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/venv/Lib/site-packages/setuptools/build_meta.py" charset="UTF-8" />
     <file url="PROJECT" charset="windows-1251" />
   </component>
 </project>
