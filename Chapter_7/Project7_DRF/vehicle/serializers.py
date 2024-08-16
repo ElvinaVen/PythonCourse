@@ -11,7 +11,7 @@ class MilageSerializer(serializers.ModelSerializer):
 
 class CarSerializer(serializers.ModelSerializer):
     last_milage = serializers.IntegerField(
-        source="milage_set.all.first.milage"
+        source="milage.all.first.milage"
     )  # 1 метод вычисляемое значение
     milage = MilageSerializer(many=True)
 
