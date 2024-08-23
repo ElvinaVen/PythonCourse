@@ -2,6 +2,8 @@ from rest_framework import serializers
 
 from vehicle.models import Car, Moto, Milage
 
+from vehicle.validators import TitleValidator
+
 
 class MilageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,9 +13,9 @@ class MilageSerializer(serializers.ModelSerializer):
 
 class CarSerializer(serializers.ModelSerializer):
     last_milage = serializers.IntegerField(
-        source="milage.all.first.milage"
+        source="milage.all.first.milage", read_only=True
     )  # 1 метод вычисляемое значение
-    milage = MilageSerializer(many=True)
+    milage = MilageSerializer(many=True, read_only=True)
 
     class Meta:
         model = Car
@@ -54,6 +56,12 @@ class MotoCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Moto
         fields = "__all__"
+        validators = [
+            TitleValidator(field="title"),
+            serializers.UniqueTogetherValidator(
+                fields=["title", "description"], queryset=Moto.objects.all()
+            ),
+        ]
 
     def create(self, validated_data):
         milage = validated_data.pop("milage")
