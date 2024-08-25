@@ -12,6 +12,10 @@ from learning.views import (
     LessonDestroyAPIView,
 )
 
+from learning.views import SubscriptionCreateAPIView
+
+from learning.views import SubscriptionListAPIView
+
 app_name = LearningConfig.name
 
 router = DefaultRouter()
@@ -27,4 +31,6 @@ urlpatterns = [
     path(
         "lesson/delete/<int:pk>/", LessonDestroyAPIView.as_view(), name="lesson-delete"
     ),
+    path("subscription/create/", SubscriptionCreateAPIView.as_view(), name="subscription-create"),
+    path('subscription/list/', SubscriptionListAPIView.as_view(), name='subscription_list'),
 ] + router.urls

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from learning.models import Course, Lesson
+from learning.models import Course, Lesson, Subscription
 
 
 @admin.register(Course)
@@ -20,4 +20,12 @@ class LessonAdmin(admin.ModelAdmin):
         "lesson_image",
         "url_video",
         "course",
+    )
+
+
+@admin.register(Subscription)
+class SubscriptionAdmin(admin.ModelAdmin):
+    list_display = (
+        "course",
+        "user",
     )
