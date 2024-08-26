@@ -42,6 +42,11 @@
     <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/.env" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/config/settings.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/learning/models.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/learning/serializers.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/learning/tests.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/learning/urls.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/learning/validators.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/learning/views.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/users/models.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/.env" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/config/__init__.py" charset="UTF-8" />
