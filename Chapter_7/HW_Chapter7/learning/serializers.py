@@ -19,13 +19,12 @@ class CourseSerializer(ModelSerializer):
         """
         при выборке данных по курсу пользователю необходимо присылать признак подписки текущего пользователя на курс
         """
-        user = self.context['request'].user
+        user = self.context["request"].user
         return Subscription.objects.all().filter(user=user, course=obj).exists()
 
 
-
 class LessonSerializer(ModelSerializer):
-    url_video = serializers.CharField(validators=[validate_youtube])
+    url_video = serializers.CharField(validators=[validate_youtube], read_only=True)
 
     class Meta:
         model = Lesson
