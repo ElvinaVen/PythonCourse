@@ -1,7 +1,8 @@
 from rest_framework import viewsets, generics
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import OrderingFilter
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from vehicle.models import Car, Moto, Milage
 from vehicle.serializers import (
@@ -14,11 +15,14 @@ from vehicle.serializers import (
 
 from vehicle.permissions import IsOwnerOrStaff
 
+from vehicle.paginators import VehiclePaginator
+
 
 class CarViewSet(viewsets.ModelViewSet):
     serializer_class = CarSerializer
     queryset = Car.objects.all()
     permission_classes = [IsAuthenticated]
+    # permission_classes = [AllowAny]  # для проверки тестов
 
 
 class MotoCreateAPIView(generics.CreateAPIView):
@@ -34,6 +38,7 @@ class MotoCreateAPIView(generics.CreateAPIView):
 class MotoListAPIView(generics.ListAPIView):
     queryset = Moto.objects.all()
     serializer_class = MotoSerializer
+    pagination_class = VehiclePaginator
 
 
 class MotoRetrieveAPIView(generics.RetrieveAPIView):
@@ -61,8 +66,10 @@ class MilageListAPIView(generics.ListAPIView):
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     filterset_fields = ("car", "moto")
     ordering_fields = ("year",)
+    pagination_class = VehiclePaginator
 
 
 class MotoMilageListAPIView(generics.ListAPIView):
     queryset = Milage.objects.filter(moto__isnull=False)
     serializer_class = MotoMilageSerializer
+    pagination_class = VehiclePaginator
