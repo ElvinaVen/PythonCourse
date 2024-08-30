@@ -4,6 +4,8 @@ from vehicle.models import Car, Moto, Milage
 
 from vehicle.validators import TitleValidator
 
+from vehicle.services import convert_currencies
+
 
 class MilageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,10 +18,15 @@ class CarSerializer(serializers.ModelSerializer):
         source="milage.all.first.milage", read_only=True
     )  # 1 метод вычисляемое значение
     milage = MilageSerializer(many=True, read_only=True)
+    usd_price = serializers.SerializerMethodField()
 
     class Meta:
         model = Car
         fields = "__all__"
+
+
+    def get_usd_price(self, instance):
+        return convert_currencies(instance.amount)
 
 
 class MotoSerializer(serializers.ModelSerializer):
