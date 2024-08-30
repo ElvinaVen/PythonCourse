@@ -19,6 +19,9 @@ from vehicle.paginators import VehiclePaginator
 
 
 class CarViewSet(viewsets.ModelViewSet):
+    """
+    ViewSet for cars
+    """
     serializer_class = CarSerializer
     queryset = Car.objects.all()
     permission_classes = [IsAuthenticated]

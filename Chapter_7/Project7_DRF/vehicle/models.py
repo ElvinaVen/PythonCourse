@@ -13,6 +13,7 @@ class Car(models.Model):
         null=True,
         blank=True,
     )
+    amount = models.IntegerField(default=1000, verbose_name="цена")
 
     def __str__(self):
         return self.title
