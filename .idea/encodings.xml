@@ -33,7 +33,7 @@
     <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/users/templates/users/user_form.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/users/urls.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/users/views.py" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/venv/lib/site-packages/psycopg2/__init__.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_6/HW_Chapter6/venv/Lib/site-packages/psycopg2/__init__.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/Lessons20/project6_1/data.json" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/Lessons20/project6_1/users/forms.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/Lessons20/project6_1/users/models.py" charset="UTF-8" />
@@ -48,6 +48,7 @@
     <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/learning/validators.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/learning/views.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/users/models.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/users/services.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/.env" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/config/__init__.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/config/asgi.py" charset="windows-1251" />
@@ -62,9 +63,9 @@
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/vehicle/tests.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/vehicle/urls.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/vehicle/validators.py" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/venv/lib/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/venv/lib/site-packages/setuptools-72.1.0.dist-info/WHEEL" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/venv/lib/site-packages/setuptools/build_meta.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/venv/Lib/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/venv/Lib/site-packages/setuptools-72.1.0.dist-info/WHEEL" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/venv/Lib/site-packages/setuptools/build_meta.py" charset="UTF-8" />
     <file url="PROJECT" charset="windows-1251" />
   </component>
 </project>

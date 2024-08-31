@@ -6,7 +6,7 @@ NULLABLE = {"null": True, "blank": True}
 
 
 class Course(models.Model):
-    course_name = models.CharField(max_length=100, verbose_name="Название курса")
+    course_name = models.CharField(max_length=100, verbose_name="Название курса", **NULLABLE)
     course_image = models.ImageField(
         upload_to="learning/image_course", verbose_name="превью  курса", **NULLABLE
     )
