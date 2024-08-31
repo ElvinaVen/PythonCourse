@@ -51,7 +51,7 @@ class Payment(models.Model):
         related_name="user_payment",
         verbose_name="пользователь",
     )
-    payment_date = models.DateField(verbose_name="дата оплаты", auto_created=True)
+    payment_date = models.DateField(verbose_name="дата оплаты", auto_created=True, blank=True, null=True)
     paid_course = models.ForeignKey(
         Course,
         on_delete=models.CASCADE,
@@ -72,9 +72,11 @@ class Payment(models.Model):
     payment_type = models.CharField(
         choices=PAYMENT_CHOICES, verbose_name="способ оплаты:"
     )
+    session_id = models.CharField(max_length=255, blank=True, null=True, verbose_name="Id сессии")
+    payment_link = models.URLField(max_length=400, blank=True, null=True, verbose_name="Ссылка на оплату")
 
     def __str__(self):
-        return f"{self.user.email} - {self.paid_lesson.lesson_name if self.paid_lesson else self.paid_course.course_name}"
+        return f"{self.user} - {self.paid_lesson if self.paid_lesson else self.paid_course}"
 
     class Meta:
         verbose_name = "Платеж"
