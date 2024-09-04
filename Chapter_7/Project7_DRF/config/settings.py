@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -24,6 +25,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "drf_yasg",
     "corsheaders",
+    "django_celery_beat",
 ]
 
 MIDDLEWARE = [
@@ -120,3 +122,17 @@ CORS_ALLOW_ORIGINS = False
 
 CUR_API_KEY = os.getenv("CUR_API_KEY")
 CUR_API_URL = os.getenv("CUR_API_URL")
+
+CELERY_BROKER_URL = "redis://127.0.0.1:6379/1"
+CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/1"
+# CELERY_ENABLE_UTC = False
+CELERY_TIMEZONE = "Asia/Yekaterinburg"
+
+CELERY_BEAT_SCHEDULE = {
+    "check_filter": {
+        "task": "vehicle.tasks.check_filter",
+        "schedule": timedelta(minutes=1),
+    },
+}
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+

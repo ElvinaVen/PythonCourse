@@ -52,6 +52,7 @@
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/.env" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/config/__init__.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/config/asgi.py" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/config/celery.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/config/settings.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/config/urls.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/config/wsgi.py" charset="windows-1251" />
@@ -60,6 +61,8 @@
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/users/urls.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/vehicle/models.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/vehicle/serializers.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/vehicle/services.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/vehicle/tasks.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/vehicle/tests.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/vehicle/urls.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/Project7_DRF/vehicle/validators.py" charset="UTF-8" />
