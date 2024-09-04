@@ -26,7 +26,7 @@ class CarSerializer(serializers.ModelSerializer):
 
 
     def get_usd_price(self, instance):
-        return convert_currencies(instance.amount)
+        return convert_currencies(instance.price)
 
 
 class MotoSerializer(serializers.ModelSerializer):
