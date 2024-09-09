@@ -23,6 +23,8 @@ INSTALLED_APPS = [
     "users",
     "rest_framework_simplejwt",
     "drf_yasg",
+    "corsheaders",
+    "django_celery_beat",
 ]
 
 MIDDLEWARE = [
@@ -117,3 +119,44 @@ SIMPLE_JWT = {
 }
 
 STRIPE_API_KEY = os.getenv("STRIPE_API_KEY")
+CORS_ALLOWED_ORIGINS = [
+    "https://read-only.example.com",
+    "https://read-and-write.example.com",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://read-and-write.example.com",
+]
+CORS_ALLOW_ORIGINS = False
+
+CELERY_BROKER_URL = "redis://127.0.0.1:6379/1"
+CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/1"
+# CELERY_ENABLE_UTC = False
+CELERY_TIMEZONE = "Asia/Yekaterinburg"
+
+# CELERY_BEAT_SCHEDULE = {
+#     "sending_update_course": {
+#         "task": "learning.tasks.sending_update_course",
+#         "schedule": timedelta(minutes=1),
+#     },
+# }
+CELERY_BEAT_SCHEDULE = {
+    'deactivate_user': {
+        'task': 'learning.tasks.deactivate_user',
+        'schedule': timedelta(minutes=1)
+    }
+}
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+# CELERY_ACCEPT_CONTENT = ['pickle', 'json']
+# CELERY_TASK_SERIALIZER = 'pickle'
+# CELERY_RESULT_SERIALIZER = 'pickle'
+
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = os.getenv("EMAIL_PORT")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", True) == 'False'
+EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL", False) == 'True'
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
