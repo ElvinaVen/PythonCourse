@@ -1,4 +1,4 @@
-from rest_framework import status
+from rest_framework import status, request
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import (
@@ -25,6 +25,7 @@ from learning.serializers import SubscriptionSerializer
 from rest_framework.response import Response
 
 from learning.paginators import CoursePaginator, LessonPaginator
+from learning.tasks import send_email
 
 
 class CourseViewSet(ModelViewSet):
@@ -40,6 +41,17 @@ class CourseViewSet(ModelViewSet):
         course = serializer.save()
         course.owner = self.request.user
         course.save()
+
+    def perform_update(self, serializer):
+        # course = serializer.save()
+        # sending_update_course.delay(course.id)
+        # course.save()
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        send_email.delay(course_id=instance.id)
+        return Response(serializer.data)
 
     def get_permissions(self):
         if self.action == ["create"]:
