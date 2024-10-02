@@ -2,6 +2,7 @@
 from django.db import models
 
 from config.settings import AUTH_USER_MODEL
+from datetime import timedelta
 
 NULLABLE = {"blank": True, "null": True}
 
@@ -60,6 +61,7 @@ class Habit(models.Model):
         verbose_name="Время на выполнение",
         **NULLABLE
     )
+
     is_published = models.BooleanField(
         default=True,
         verbose_name="Признак публичности",
@@ -67,7 +69,7 @@ class Habit(models.Model):
     )
 
     def __str__(self):
-        return f"'Я БУДУ' {self.action} 'В' {self.time} 'В' {self.place}"
+        return f"'Я БУДУ' {self.action} 'В' {self.time} 'В' {self.place}/      хозяин {self.user}"
 
     class Meta:
         verbose_name_plural = 'привычки'
