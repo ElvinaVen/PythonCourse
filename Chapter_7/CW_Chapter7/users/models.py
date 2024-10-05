@@ -5,7 +5,13 @@ from django.db import models
 class User(AbstractUser):
     username = None
     email = models.EmailField(unique=True, verbose_name="почта")
-
+    tg_chat_id = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True,
+        verbose_name="TG чат ID",
+        help_text="Укажите чат ID в Telegram",
+    )
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
