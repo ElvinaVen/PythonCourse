@@ -39,6 +39,18 @@
     <file url="file://$PROJECT_DIR$/Chapter_6/Lessons20/project6_1/users/models.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/Lessons20/project6_1/users/templates/users/user_form.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_6/Lessons20/project6_1/users/views.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/CW_Chapter7/.env" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/CW_Chapter7/config/__init__.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/CW_Chapter7/config/celery.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/CW_Chapter7/config/settings.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/CW_Chapter7/habits/models.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/CW_Chapter7/habits/serializer.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/CW_Chapter7/habits/services.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/CW_Chapter7/habits/tasks.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/CW_Chapter7/habits/validators.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/CW_Chapter7/habits/views.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/CW_Chapter7/users/models.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/CW_Chapter7/users/permissions.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/.env" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/config/celery.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/config/settings.py" charset="UTF-8" />
