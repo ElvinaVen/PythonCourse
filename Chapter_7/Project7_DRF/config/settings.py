@@ -9,7 +9,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = os.getenv("DEBUG", False) == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -63,7 +63,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": os.getenv("ENGINE"),
-        "NAME": os.getenv("NAME"),
+        "NAME": os.getenv("POSTGRES_DB"),
         "USER": os.getenv("POSTGRES_USER"),  # Пользователь для подключения
         "PASSWORD": os.getenv("POSTGRES_PASSWORD"),  # Пароль для этого пользователя
         "HOST": os.getenv("HOST"),  # Адрес, на котором развернут сервер БД
