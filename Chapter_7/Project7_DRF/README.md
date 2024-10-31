@@ -3,3 +3,6 @@ Docker:
 2. в IDE пишем docker build . -t vehicle_app  
 3. IDE пишем docker run -it --network=vehicle -p 8000:8000 -d vehicle_app
 4. переходим на http://localhost:8000/admin/
+Docker Compose:
+1. Для запуска файла в Docker, ввести команду в терминал:
+docker-compose up -d --build
