@@ -6,3 +6,4 @@ Docker:
 Docker Compose:
 1. Для запуска файла в Docker, ввести команду в терминал:
 docker-compose up -d --build
+2. Переходим, например, на http://127.0.0.1:8000/swagger/
