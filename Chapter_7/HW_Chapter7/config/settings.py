@@ -35,6 +35,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -61,11 +62,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": os.getenv("ENGINE"),
-        "NAME": os.getenv("NAME"),
+        "NAME": os.getenv("POSTGRES_DB"),
         "USER": os.getenv("POSTGRES_USER"),  # Пользователь для подключения
         "PASSWORD": os.getenv("POSTGRES_PASSWORD"),  # Пароль для этого пользователя
-        "HOST": os.getenv("HOST"),  # Адрес, на котором развернут сервер БД
-        "PORT": os.getenv("PORT"),  # Порт, на котором работает сервер БД
+        "HOST": os.getenv("POSTGRES_HOST"),  # Адрес, на котором развернут сервер БД
+        "PORT": os.getenv("POSTGRES_PORT"),  # Порт, на котором работает сервер БД
     }
 }
 
@@ -129,8 +130,8 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 CORS_ALLOW_ORIGINS = False
 
-CELERY_BROKER_URL = "redis://127.0.0.1:6379/1"
-CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/1"
+CELERY_BROKER_URL = "redis://redis:6379/1"
+CELERY_RESULT_BACKEND = "redis://redis:6379/1"
 # CELERY_ENABLE_UTC = False
 CELERY_TIMEZONE = "Asia/Yekaterinburg"
 
@@ -160,3 +161,4 @@ EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL", False) == 'True'
 
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+CORS_ALLOW_ALL_ORIGINS = True  # Это разрешит все источники, но лучше указывать конкретные, если возможно
