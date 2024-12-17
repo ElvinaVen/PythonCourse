@@ -52,8 +52,10 @@
     <file url="file://$PROJECT_DIR$/Chapter_7/CW_Chapter7/users/models.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/CW_Chapter7/users/permissions.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/.env" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/README.md" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/config/celery.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/config/settings.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/docker-compose.yaml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/learning/models.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/learning/serializers.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Chapter_7/HW_Chapter7/learning/tasks.py" charset="UTF-8" />
