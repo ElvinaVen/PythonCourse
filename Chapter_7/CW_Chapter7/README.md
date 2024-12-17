@@ -21,3 +21,8 @@
     В терминале запустите celery worker командой: <celery -A config worker -l INFO> (Для Windows: <celery -A config.celery worker --loglevel=info -P eventlet>)
 
     В другом терминале запустите celery beat командой: <celery -A config.celery beat --loglevel=info>
+
+Docker Compose:
+1. Для запуска файла в Docker, ввести команду в терминал:
+docker-compose up -d --build
+2. Переходим, например, на http://127.0.0.1:8000/swagger/
