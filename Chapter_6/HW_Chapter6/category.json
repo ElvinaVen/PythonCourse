@@ -1,0 +1,18 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Мебель",
+      "description": "Качественная мебель по ценам от производителя"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Интерьер",
+      "description": "Картины, шторы и всё для вашего уюта"
+    }
+  }
+]

@@ -1,0 +1,20 @@
+{% extends 'main/index.html'%}
+{% block content %}
+
+<div class="col-6">
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">имя: {{ object.first_name }}</p>
+            <p class="card-text">фамилия: {{ object.last_name }}</p>
+            <p class="card-text">email: {{ object.email }}</p>
+            <p class="card-text">комментарий: {{ object.comment }}</p>
+
+            <div class="btn-group">
+                <a class="btn btn-primary" href="{% url 'main:list_client'%}"
+                   role="button">Назад</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
